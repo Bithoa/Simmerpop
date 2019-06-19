@@ -1,6 +1,5 @@
 from ... import global_variables
 from ... import population_manager
-from ... import analytics
 from . import cd_energy_io
 import random
 import os

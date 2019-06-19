@@ -1,6 +1,4 @@
 from .... import global_variables
-from .... import population_manager
-from .... import analytics
 from . import cd_gene
 
 __author__ = 'You!'

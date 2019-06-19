@@ -1,6 +1,4 @@
 from ... import global_variables
-from ... import population_manager
-from ... import analytics
 from . import cd_food_io
 from ..food_types import custom_food_template
 
@@ -10,14 +8,6 @@ __author__ = 'Yuta A. Takagi'
 # a food In/Out manages the global aspects of food and interfaces between the population portion of the model.
 # having a separate set of modules for food allows for the mechanics of this part of the model to be independently
 # changed without a need to alter the rest of the model.
-
-
-# ====================================================================================================
-# ****************************************************************************************************
-
-
-# ****************************************************************************************************
-# ====================================================================================================
 
 
 # all food In/Outs should be child classes to the 'FoodIO' class defined in the 'cd_food_io' module

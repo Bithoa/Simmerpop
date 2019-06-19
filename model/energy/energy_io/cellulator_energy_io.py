@@ -43,29 +43,29 @@ class EnergyIO(cd_energy_io.EnergyIO):  # this class name cannot be altered. Lea
             NEW_ENERGY_PARCEL_SIZE = global_variables.parameters.get('NEW_ENERGY_PARCEL_SIZE')
 
     def next_step(self):
-        add_energy()		
-
-    # adds energy to the environment
-    def add_energy(self):
+        global ENERGY_LIMIT
+        global NEW_ENERGY_PARCEL_SIZE
         # if energy is unlimited
         if ENERGY_LIMIT == 0:
             # add energy at a regular intervals
             if global_variables.step_num % global_variables.MUTATION_INTERVAL == 0:
-                for i in range(population_manager.POPULATION_CAP):
-                    self.loose_energy_parcels.append(NEW_ENERGY_PARCEL_SIZE)
+                self.add_energy()
         # if energy is limited, add energy at start, then cull the energy pool every step
         elif ENERGY_LIMIT == 1:
             # add energy at step 0
             if global_variables.step_num == 0:
-                for i in range(population_manager.POPULATION_CAP):
-                    self.loose_energy_parcels.append(NEW_ENERGY_PARCEL_SIZE)
+                self.add_energy()
             # limit energy abundance to the capacity at every step
             self.cull_energy_pool()
         # if there is only a burst of energy at step 0, add energy at step 0
         else:
             if global_variables.step_num == 0:
-                for i in range(population_manager.POPULATION_CAP):
-                self.loose_energy_parcels.append(NEW_ENERGY_PARCEL_SIZE)
+                self.add_energy()
+
+    # adds energy to the environment
+    def add_energy(self):
+        for i in range(population_manager.POPULATION_CAP):
+            self.loose_energy_parcels.append(NEW_ENERGY_PARCEL_SIZE)
 
     # returns a random energy parcel from the energy pool
     def get_energy(self, organism):

@@ -1,6 +1,4 @@
 from ... import global_variables
-from ... import population_manager
-from ... import analytics
 import itertools
 
 __author__ = 'Yuta A. Takagi'

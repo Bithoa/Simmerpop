@@ -10,8 +10,8 @@ __author__ = 'Yuta A. Takagi'
 # changed without a need to alter the rest of the model.
 
 
-# global variables may be shared between all instances of the GenomeManager class
-EXAMPLE_VARIABLE = 0.001
+# global variables may be defined for the FoodIO class
+EXAMPLE_VARIABLE = 0.1
 
 # implement a method called init_script() if you would like to dynamically initialize global variables
 def init_script():
@@ -20,8 +20,8 @@ def init_script():
     # global_variables.parameters.get('KEY')
     global EXAMPLE_VARIABLE
 	EXAMPLE_VARIABLE = float(global_variables.parameters.get('EXAMPLE_VARIABLE'))
-    # in the above example, you could override the default mutate prob of 0.001 from the command line by typing:
-    # python3 run_simmerpop.py EXAMPLE_VARIABLE 0.025
+    # in the above example, you could override the default exmple variable value of 0.1 with 0.2 from the command line by typing:
+    # python3 run_simmerpop.py EXAMPLE_VARIABLE 0.2
 
 # all food In/Outs should be child classes to the 'FoodIO' class defined in the 'cd_food_io' module
 class FoodIO(cd_food_io.FoodIO):  # this class name cannot be altered. Leave as 'FoodIO'

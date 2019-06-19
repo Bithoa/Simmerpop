@@ -32,6 +32,12 @@ class FoodIO(cd_food_io.FoodIO):  # this class name cannot be altered. Leave as 
         # the following example line creates a list to store the discarded food
         self.trash = []
 
+    def next_step(self):
+        # this method is called by once per time step and is good for modifying global variables that depend on the step count
+	
+        # this example line increases the EXAMPLE_VARIABLE by 0.01 each step
+        EXAMPLE_VARIABLE += 0.01
+
     def get_food(self):
         # this method is called when an organism requires a 'Food' and should return an instance of a child of the
         # 'Food' object defined in the 'cd_food_type' module

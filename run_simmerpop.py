@@ -51,7 +51,7 @@ def main():
         # disposes of dead organisms
         population_manager.clean_carcasses()
 
-				# add energy to the environment
+        # add energy to the environment
         global_variables.ENERGY_IO.add_energy()
 
         # replicates organisms with enough energy

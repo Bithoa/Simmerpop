@@ -9,28 +9,16 @@ __author__ = 'Yuta A. Takagi'
 # this food type is designed for Yuta's model
 #
 # the solution is the simple inverse (boolean not) of each input position
-# the reward is the number of correct solutions raised to the power of 3, minus a dynamically adapting quantity who's
+# the reward is the number of correct solutions raised to a power (3 by default), minus a dynamically adapting quantity who's
 # value increases if the population is healthy, but decreases if organisms are dying
 
 
-# ====================================================================================================
-# ****************************************************************************************************
+FOODNOT_BASE_PAYOFF_EXPONENT = 3
+FOODNOT_PAYOFF_ADJUSTMENT_FACTOR = 0.1
+FOODNOT_REDUCE_PAYOFF_WHEN_OVER = 1.0
+FOODNOT_INCREASE_PAYOFF_WHEN_UNDER = 0.5
 
-
-# ****************************************************************************************************
-# ====================================================================================================
-
-
-reduction_factor = 0
-
-
-def calc_food_payoff_reduction_factor():
-    global reduction_factor
-    if len(population_manager.organisms) > (population_manager.POPULATION_CAP):
-        reduction_factor += 1
-    if len(population_manager.organisms) <= (population_manager.POPULATION_CAP * 0.5):
-        reduction_factor -= 1
-
+adjustment = 0
 
 class FoodNot(cd_food_type.Food):  # the not of the input #NO REDUCTION FACTOR
     def __init__(self):
@@ -56,21 +44,26 @@ class FoodNot(cd_food_type.Food):  # the not of the input #NO REDUCTION FACTOR
                 if self.solution[i] == correct_solution[i]:
                     num_correct += 1
                     self.position_solved[i] = True
-        # reward = 25 * (math.sin(math.pi / 8 * num_correct - math.pi / 2) + 1)
-        # if master.step_num < 24000:
-        #     reward = (num_correct**3) - (master.step_num*0.01)
-        # else:
-        #     reward = (num_correct**3) - (24000 * 0.01)
+                    
+        reward = calc_food_payoff(num_correct)
         
-        reward = (num_correct ** 3) - (reduction_factor * 0.1)
-        #reward = (num_correct ** 2.5) #no reduction_factor
-        if reward < 0:
-            reward = 0
-        # reward = (num_correct**2.25)
-        # reward = (num_correct**3)/4
-        # reward = (num_correct**4)/20
         if self.position_solved == [True, True, True, True, True, True, True, True]:
             self.spent = True
         to_return = [num_correct, reward]
         self.quality -= num_correct
         return to_return
+    
+    def calc_food_payoff(self.num_correct)
+        global FOODNOT_BASE_PAYOFF_EXPONENT
+        global FOODNOT_PAYOFF_ADJUSTMENT_FACTOR
+        reward = (num_correct ** FOODNOT_BASE_PAYOFF_EXPONENT) - (adjustment * FOODNOT_PAYOFF_ADJUSTMENT_FACTOR)
+        if reward < 0:
+            reward = 0
+            
+    def calc_food_payoff_reduction_factor():
+        global adjustment
+        if len(population_manager.organisms) > (population_manager.POPULATION_CAP):
+            adjustment += 1
+        if len(population_manager.organisms) <= (population_manager.POPULATION_CAP * 0.5):
+            adjustment -= 1
+

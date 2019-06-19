@@ -52,7 +52,7 @@ def main():
         population_manager.clean_carcasses()
 
         # add energy to the environment
-        global_variables.ENERGY_IO.add_energy()
+        global_variables.ENERGY_IO.next_step()
 
         # replicates organisms with enough energy
         population_manager.replicate_organisms()

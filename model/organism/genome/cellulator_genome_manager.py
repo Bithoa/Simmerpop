@@ -1,4 +1,4 @@
-# .py
+# cellulator_genome_manager.py
 from ... import global_variables
 from . import cd_genome_manager
 from .gene_types import gene_get, gene_put, gene_nand, gene_cellularity

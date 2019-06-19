@@ -178,8 +178,8 @@ class GenomeManager(cd_genome_manager.GenomeManager):
 
 	# randomly removes gene fragments from the environmental gene pool if their number exceeds the LOOSE_GENE_POOL_CAP
     def cull_genome_fragments_pool(self):
-       # remove random gene fragments if over gene pool cap
-       while len(self.loose_genome_fragments) > LOOSE_GENE_POOL_CAP:
+    	# remove random gene fragments if over gene pool cap
+    	while len(self.loose_genome_fragments) > LOOSE_GENE_POOL_CAP:
             remove_me = random.randint(0, len(self.loose_genome_fragments) - 1)
             self.loose_genome_fragments.pop(remove_me)
 
@@ -256,6 +256,8 @@ class GenomeManager(cd_genome_manager.GenomeManager):
 
         if len(organism.genome) == 0:
             organism.alive = False
+	
+	fix_pointers(organism)
 
 	# repairs pointers in a genome that have been broken due to mutations
     def fix_pointers(self, organism):

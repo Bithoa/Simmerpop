@@ -34,7 +34,7 @@ class EnergyIO:
         pass
     
     def next_step(self):
-        raise NotImplementedError
+        pass
 
     def get_energy(self, organism):
         raise NotImplementedError

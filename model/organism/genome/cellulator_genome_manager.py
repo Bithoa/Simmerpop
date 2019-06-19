@@ -1,4 +1,4 @@
-# cellulator_genome_manager.py
+# .py
 from ... import global_variables
 from . import cd_genome_manager
 from .gene_types import gene_get, gene_put, gene_nand, gene_cellularity
@@ -78,11 +78,11 @@ def init_script():
 
 # the cellulator genome manager class
 class GenomeManager(cd_genome_manager.GenomeManager):
-	# initializes the instance
+    # initializes the instance
     def __init__(self):
         self.loose_genome_fragments = []
 
-	# creates a genome of:
+    # creates a genome of:
     # 8 GeneGet genes, one mapped to each input
     # 16 randomized GeneNAND genes
     # 8 GenePut genes, one mapped to each output
@@ -99,7 +99,7 @@ class GenomeManager(cd_genome_manager.GenomeManager):
             temp_genes.append(gene_cellularity.GeneCellularity(organism))
         return temp_genes
 
-	# calculates the cellularity as 1 - 0.5^(# of cellularity genes)
+    # calculates the cellularity as 1 - 0.5^(# of cellularity genes)
     def calculate_cellularity(self, organism):
         if len(organism.genome) > 0:
             cellularity_gene_tally = 0
@@ -110,7 +110,7 @@ class GenomeManager(cd_genome_manager.GenomeManager):
         else:
             return 0  # if there is no genome, hard code to 0 probability?
 
-	# returns a list of the genome broken up randomly according to the GENOME_BREAK_PROB
+    # returns a list of the genome broken up randomly according to the GENOME_BREAK_PROB
     def break_genome(self, organism):
         to_return = []
         temp_fragment = []
@@ -125,7 +125,7 @@ class GenomeManager(cd_genome_manager.GenomeManager):
             to_return.append(temp_fragment)
         return to_return
 
-	# causes the organism to lose a random gene segment according to the HGT_PROB
+    # causes the organism to lose a random gene segment according to the HGT_PROB
     def lose_genes(self, organism):
         if random.random() < HGT_PROB:
             my_fragments = self.break_genome(organism)
@@ -155,7 +155,7 @@ class GenomeManager(cd_genome_manager.GenomeManager):
                 organism.alive = False
             organism.mutated = True
 
-	# causes the organism to gain a random gene segment according to the HGT_PROB
+    # causes the organism to gain a random gene segment according to the HGT_PROB
     def gain_genes(self, organism):
         if random.random() < HGT_PROB:
             if len(self.loose_genome_fragments) > 0:  # if gene is gained
@@ -176,14 +176,14 @@ class GenomeManager(cd_genome_manager.GenomeManager):
                     organism.genome_read_head += len(section_to_insert)
                 organism.mutated = True
 
-	# randomly removes gene fragments from the environmental gene pool if their number exceeds the LOOSE_GENE_POOL_CAP
+    # randomly removes gene fragments from the environmental gene pool if their number exceeds the LOOSE_GENE_POOL_CAP
     def cull_genome_fragments_pool(self):
     	# remove random gene fragments if over gene pool cap
     	while len(self.loose_genome_fragments) > LOOSE_GENE_POOL_CAP:
             remove_me = random.randint(0, len(self.loose_genome_fragments) - 1)
             self.loose_genome_fragments.pop(remove_me)
 
-	# causes point mutations in the genome according to the various mutation probabilities
+    # causes point mutations in the genome according to the various mutation probabilities
     def mutate(self, organism):
         # Mutating pointers in genes
         for gene in organism.genome:
@@ -259,13 +259,13 @@ class GenomeManager(cd_genome_manager.GenomeManager):
 	
 	fix_pointers(organism)
 
-	# repairs pointers in a genome that have been broken due to mutations
+    # repairs pointers in a genome that have been broken due to mutations
     def fix_pointers(self, organism):
         for i, gene in enumerate(organism.genome):
             if type(gene) is gene_nand.GeneNAND:
                 gene.fix_pointers(i)
 
-	# returns a Gene initialized from a string representation
+    # returns a Gene initialized from a string representation
     def init_gene_from_string_repr(self, organism, string_repr):
         repr_params = string_repr.split('_')
         to_return = None

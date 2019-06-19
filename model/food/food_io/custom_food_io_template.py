@@ -10,6 +10,9 @@ __author__ = 'Yuta A. Takagi'
 # changed without a need to alter the rest of the model.
 
 
+# global variables may be shared between all instances of the GenomeManager class
+EXAMPLE_VARIABLE = 0.001
+
 # implement a method called init_script() if you would like to dynamically initialize global variables
 def init_script():
     # you can define and pass key value pairs from the command line arguments.

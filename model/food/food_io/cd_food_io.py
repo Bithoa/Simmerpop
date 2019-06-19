@@ -30,10 +30,10 @@ def make_food_id():
 class FoodIO:
     def __init__(self):
         pass
-    def make_food_pool(self):
-        raise NotImplementedError
-    def add_food(self) :
-        raise NotImplementedError
+    
+    def next_step(self):
+        pass
+
     def get_food(self):
         raise NotImplementedError
 

@@ -12,6 +12,11 @@ __author__ = 'Yuta A. Takagi (2016) & Diep Nguyen (2018)'
 # it provides a 'FoodNot' food every time an organism requests a food
 
 
+# initialize the food_type_not script
+def init_script():
+    food_type_not.init_script()
+
+
 class FoodIO(cd_food_io.FoodIO):  # this class name cannot be altered. Leave as 'FoodIO'    
     def get_food(self):
         return food_type_not.FoodNot()

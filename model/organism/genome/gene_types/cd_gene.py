@@ -1,6 +1,3 @@
-from .... import global_variables
-from .... import population_manager
-from .... import analytics
 
 __author__ = 'Yuta A. Takagi'
 

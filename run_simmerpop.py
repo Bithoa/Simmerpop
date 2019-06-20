@@ -25,76 +25,77 @@ import sys
 
 def main():
 
-    # initialize the end conditions
-    end_conditions.init_end_conditions()
+	# initialize the global variables
+	global_variables.init_global_variables(sys.argv)
+	
+	# initialize the end conditions
+	end_conditions.init_end_conditions()
 
-    # initialize the global variables
-    global_variables.init_global_variables(sys.argv)
-
-    # initialize the analytics
-    analytics.init_analytics()
-
-    # initialize the population manager
-    population_manager.init_population_manager()
+	# initialize the population manager
+	population_manager.init_population_manager()
+	
+	# initialize the analytics
+	analytics.init_analytics()
 
 
-    # run model, each loop is one step
-    while end_conditions.continue_run:
-        global_variables.step_num += 1  # increment the step_num variable
 
-        # stops the model if it exceeds a maximum step count
-        end_conditions.check_max_step()
+	# run model, each loop is one step
+	while end_conditions.continue_run:
+		global_variables.step_num += 1	# increment the step_num variable
 
-        # stops the model if it exceeds a maximum runtime
-        end_conditions.check_timeout()
+		# stops the model if it exceeds a maximum step count
+		end_conditions.check_max_step()
 
-        # disposes of dead organisms
-        population_manager.clean_carcasses()
+		# stops the model if it exceeds a maximum runtime
+		end_conditions.check_timeout()
 
-        # perform the next step for the energy in/out
-        global_variables.ENERGY_IO.next_step()
+		# disposes of dead organisms
+		population_manager.clean_carcasses()
 
-        # replicates organisms with enough energy
-        population_manager.replicate_organisms()
+		# perform the next step for the energy in/out
+		global_variables.ENERGY_IO.next_step()
 
-        # do mutation actions at a regular interval
-        if global_variables.step_num % global_variables.MUTATION_INTERVAL == 0:
-            # lose and gain energy to the environment
-            population_manager.transfer_energy()
+		# replicates organisms with enough energy
+		population_manager.replicate_organisms()
 
-            # lose and gain genes to the environment
-            population_manager.transfer_genes()
+		# do mutation actions at a regular interval
+		if global_variables.step_num % global_variables.MUTATION_INTERVAL == 0:
+			# lose and gain energy to the environment
+			population_manager.transfer_energy()
 
-            # mutate organisms
-            population_manager.mutate_organism_genomes()
+			# lose and gain genes to the environment
+			population_manager.transfer_genes()
 
-            # disposes of dead organisms
-            population_manager.clean_carcasses()
+			# mutate organisms
+			population_manager.mutate_organism_genomes()
 
-            # recalculate genome quality and cellularity of mutated organisms
-            population_manager.recalculate_mutated_organisms()
+			# disposes of dead organisms
+			population_manager.clean_carcasses()
 
-        # reduce to population cap size
-        population_manager.cull_organisms()
+			# recalculate genome quality and cellularity of mutated organisms
+			population_manager.recalculate_mutated_organisms()
 
-        # perform the next step for the genome manager
-        global_variables.GENOME_MANAGER.next_step()
+		# reduce to population cap size
+		population_manager.cull_organisms()
 
-        # perform the next step for the food in/out
-        global_variables.FOOD_IO.next_step()
+		# perform the next step for the genome manager
+		global_variables.GENOME_MANAGER.next_step()
 
-        # analyze and log
-        analytics.analyze()
+		# perform the next step for the food in/out
+		global_variables.FOOD_IO.next_step()
 
-        # perform the next step for each organism
-        population_manager.organisms_next_step()
+		# analyze and log
+		analytics.analyze()
 
-        # stops the model if there are no organisms left alive
-        end_conditions.check_ecosystem_alive()
+		# perform the next step for each organism
+		population_manager.organisms_next_step()
 
-    # end the model
-    # ends analytics
-    analytics.close_analytics()
+		# stops the model if there are no organisms left alive
+		end_conditions.check_ecosystem_alive()
+
+	# end the model
+	# ends analytics
+	analytics.close_analytics()
 
 
 main()

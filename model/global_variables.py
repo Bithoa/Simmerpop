@@ -24,10 +24,10 @@ MUTATION_INTERVAL = 100
 # separate folders and modules are separated by '.'s
 
 # the energy IO script to use.
-MODULE_ENERGY_IO = importlib.import_module('model.energy.energy_io.energy_io_capped_pool_model')
+MODULE_ENERGY_IO = importlib.import_module('model.energy.energy_io.cellulator_energy_io')
 
 # the food IO script to use.
-MODULE_FOOD_IO = importlib.import_module('model.food.food_io.food_io_basic')
+MODULE_FOOD_IO = importlib.import_module('model.food.food_io.cellulator_food_io')
 
 # the genome manager script to use.
 MODULE_GENOME_MANAGER = importlib.import_module('model.organism.genome.cellulator_genome_manager')

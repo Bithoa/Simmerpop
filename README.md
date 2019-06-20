@@ -41,47 +41,47 @@ Tip: you can simply type cd, then drag and drop the folder from the finder windo
 ```
 cd /filepath_example/Simmerpop
 ```
-Now execute the run_simmerpop.py script
+> Now execute the run_simmerpop.py script
 ```
 python3 run_simmerpop.py
 ```
-Additional arguments can be provided to change the simulation's behavior. See [User definable arguments](#user-definable-arguments).  
+> Additional arguments can be provided to change the simulation's behavior. See [User definable arguments](#user-definable-arguments).  
 Example:
 ```
 python3 run_simmerpop.py KEY value
 ```
 
 #### Linux
-Open the terminal program. In KDE, open the main menu and select "Run Command..." to open Konsole. In GNOME, open the main menu, open the Applications folder, open the Accessories folder, and select Terminal. Navigate to the Simmerpop folder from the command line
+> Open the terminal program. In KDE, open the main menu and select "Run Command..." to open Konsole. In GNOME, open the main menu, open the Applications folder, open the Accessories folder, and select Terminal. Navigate to the Simmerpop folder from the command line
 ```
 cd /filepath_example/Simmerpop
 ```
-Make sure the run_simmerpop.py script is executable
+> Make sure the run_simmerpop.py script is executable
 ```
 chmod +x run_simmerpop.py
 ```
-Now execute the run_simmerpop.py script
+> Now execute the run_simmerpop.py script
 ```
 python3 run_simmerpop.py
 ```
-Additional arguments can be provided to change the simulation's behavior. See [User definable arguments](#user-definable-arguments).  
+> Additional arguments can be provided to change the simulation's behavior. See [User definable arguments](#user-definable-arguments).  
 Example:
 ```
 python3 run_simmerpop.py KEY value
 ```
 
 #### Windows
-Open the Windows terminal by going to the Start menu and selecting "Run...", then type ```cmd```. Now navigate to the Simmerpop folder from the command line
+> Open the Windows terminal by going to the Start menu and selecting "Run...", then type ```cmd```. Now navigate to the Simmerpop folder from the command line
 ```
 cd \example_filepath\Simmerpop
 ```
-Now execute the run_simmerpop.py script
+> Now execute the run_simmerpop.py script
 ```
 run_simmerpop.py
 ```
-If that doesn't work make sure your PATH contains the python dictionary. See [how to get python](https://en.wikibooks.org/wiki/Python_Programming/Getting_Python).
+> If that doesn't work make sure your PATH contains the python dictionary. See [how to get python](https://en.wikibooks.org/wiki/Python_Programming/Getting_Python).
 
-Additional arguments can be provided to change the simulation's behavior. See [User definable arguments](#user-definable-arguments).  
+> Additional arguments can be provided to change the simulation's behavior. See [User definable arguments](#user-definable-arguments).  
 Example:
 ```
 run_simmerpop.py KEY value

@@ -108,11 +108,11 @@ HGT_PROB # (float) <0.5> probability of horizontal gene transfer \
 8. custom_energy_io_template.py\
 EXAMPLE_VARIABLE # (float) <0.1> an example\
 
-9. cellulator_energy_io.py\
+9. cellulator_energy_io.py
 ENERGY_LIMIT 	# (int) # <0> a flag indicating the behavior of the energy IO. 
 + 0 = regular addition of energy and no energy pool cap\
 + 1 = a single burst of energy at the start and an energy pool size limited to the ENERGY_CAP_PROPORTION*POPULATION_CAP
-+ 2 = a single burst of energy at the start and no energy pool cap\
++ 2 = a single burst of energy at the start and no energy pool cap \
 ENERGY_CAP_PROPORTION # (float) <0.25> multiplied by the POPULATION_CAP to determine the energy pool cap limit if the ENERGY_LIMIT flag is set to 1
 NEW_ENERGY_PARCEL_SIZE # (int) <500> the amount of energy in newly added energy parcels 
 
@@ -120,7 +120,7 @@ NEW_ENERGY_PARCEL_SIZE # (int) <500> the amount of energy in newly added energy 
 EXAMPLE_VARIABLE # (float) <0.1> an example\
 
 11. food_type_not.py \
-the energy_reward = n^x-a*A where \ 
+the energy_reward = n^x-a*A where 
 + n = the number of digits correctly solved in the food puzzle
 + x = FOODNOT_BASE_PAYOFF_EXPONENT
 + a = FOODNOT_PAYOFF_ADJUSTMENT_FACTOR

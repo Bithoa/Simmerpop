@@ -33,7 +33,7 @@ class FoodIO(cd_food_io.FoodIO):  # this class name cannot be altered. Leave as 
         self.trash = []
 
     def next_step(self):
-        # this method is called by once per time step and is good for modifying global variables that depend on the step count
+        # this method is called once per time step and is good for modifying global variables that depend on the step count
 	
         # this example line increases the EXAMPLE_VARIABLE by 0.01 each step
         EXAMPLE_VARIABLE += 0.01

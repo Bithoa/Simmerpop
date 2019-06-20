@@ -1,6 +1,11 @@
 # Simmerpop
 Simulation of Emergent Populations
 
+[Description](#description)\
+[Usage](#usage)\
+  [Instalation and execution](#instalation-and-execution)
+    [Mac](#mac)
+    
 
 ## Description
 Simmerpop is a repository of code for conducting virtual life simulations. It was developed with a focus on simmulating early life ecosystems to further our understanding of the origin of life. 
@@ -230,7 +235,8 @@ To use your new script, give the script's name as a command line argument when r
 python3 run_simmerpop.py GENOME_MANAGER my_genome_manager 
 ```
 The food and gene types are similarly available to be custamized for use in the "Cellulator" build.  
-If you have a series of interdependent custom scripts, it would be good practice to give them a common name.  
+
+If you have a group of interdependent custom scripts, it would be good practice to give them a common name.  
 
 
 ## Support

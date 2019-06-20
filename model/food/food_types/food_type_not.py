@@ -83,7 +83,7 @@ class FoodNot(cd_food_type.Food):  # the not of the input
         self.quality -= num_correct
         return to_return
     
-    def calc_food_payoff(self.num_correct)
+    def calc_food_payoff(num_correct)
         global FOODNOT_BASE_PAYOFF_EXPONENT
         global FOODNOT_PAYOFF_ADJUSTMENT_FACTOR
         reward = (num_correct ** FOODNOT_BASE_PAYOFF_EXPONENT) - (adjustment * FOODNOT_PAYOFF_ADJUSTMENT_FACTOR)

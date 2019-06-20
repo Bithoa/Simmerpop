@@ -66,8 +66,8 @@ run_simmerpop.py KEY value
 ```
 
 ### User definable arguments
-* User definable arguments can be added as arguments when running run_simmerpop.py from the command line. Each argument comes as a `KEY value` pair. Any number of these pairs can be given as arguments in any order. 
-Most `KEY`s simply change a simulation constant (such as the starting population size) to the given `value` overriding the default value. 
+User definable arguments can be added as arguments when running run_simmerpop.py from the command line. Each argument comes as a `KEY value` pair. Any number of these pairs can be given as arguments in any order. 
+* Most `KEY`s simply change a simulation constant (such as the starting population size) to the given `value` overriding the default value. 
 * Some `KEY`s change the simulation's behavior, following a ruleset denoted by the given `value`. 
 * Some `KEYS`s are used to indicate a different user definable script by giving its name as the `value`. This allows users to program their own versions of specific modules to behave in new ways, without overwriting existing modules. 
 

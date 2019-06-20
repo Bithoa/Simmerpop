@@ -3,8 +3,8 @@ Simulation of Emergent Populations
 
 [Description](#description)\
 [Usage](#usage)\
-  [Instalation and execution](#instalation-and-execution)
-    [Mac](#mac)
+  [Instalation and execution](#instalation-and-execution)\
+    [Mac](#mac)\
     
 
 ## Description

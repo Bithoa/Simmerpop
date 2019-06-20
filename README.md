@@ -7,7 +7,7 @@ Simmerpop is a repository of code for conducting virtual life simmulations. It w
 ## Usage
 To run the simmulation, copy the entire code repository to the desired location on your machine. Then run the python 3 script from the repository's root directory. 
 
-Mac
+### Mac
 - Run the python script: python3 run_model.py [arguments value]
 - Options:
 1. Output folder: output_folder_name [name]

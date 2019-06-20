@@ -102,8 +102,8 @@ Description: where KEY is the keyword to use, default_value is the value used by
 
 #### Simmerpop scripts
 (common to all Simmerpop runs)
-> 
-**global_variables.py**  
+ 
+> **global_variables.py**  
 
 `MUTATION_INTERVAL` `100` *(int)*\
 set how frequently mutation actions are performed

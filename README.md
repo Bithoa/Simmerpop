@@ -7,7 +7,7 @@ Simmerpop is a repository of code for conducting virtual life simulations. It wa
 
 
 ## Usage
-The Simmerpop repository is freely available on GitHub at the url: 
+The Simmerpop repository is freely available on GitHub at the url\ 
 https://github.com/GoldmanLab/Simmerpop/
 
 To run the simulation, download the entire code repository to the desired location on your machine. 
@@ -70,9 +70,9 @@ run_simmerpop.py KEY value
 
 ### User definable arguments
 User definable arguments can be added as arguments when running run_simmerpop.py from the command line. Each argument comes as a `KEY` `value` pair. Any number of these pairs can be given as arguments in any order. 
-* Most `KEY`s simply change a simulation constant (such as the starting population size) to the given `value` overriding the default value. 
-* Some `KEY`s change the simulation's behavior, following a ruleset denoted by the given `value`. 
-* Some `KEYS`s are used to indicate a different user definable script by giving its name as the `value`. This allows users to program their own versions of specific modules to behave in new ways, without overwriting existing modules. 
++ Most `KEY`s simply change a simulation constant (such as the starting population size) to the given `value` overriding the default value. 
++ Some `KEY`s change the simulation's behavior, following a ruleset denoted by the given `value`. 
++ Some `KEYS`s are used to indicate a different user definable script by giving its name as the `value`. This allows users to program their own versions of specific modules to behave in new ways, without overwriting existing modules. 
 
 `KEY` `value` pairs are listed below organized by which scripts they modify. They are given in the format:
 
@@ -80,7 +80,9 @@ User definable arguments can be added as arguments when running run_simmerpop.py
 Description: where KEY is the keyword to use, default_value is the value used by the model when it is not especified here, and data_type is the type of data, either and integer, float, boolean, or string.
 
 
-**Simmerpop scripts** (common to all Simmerpop runs)
+##### Simmerpop scripts
+(common to all Simmerpop runs)
+
 **global_variables.py**  
 
 `MUTATION_INTERVAL` `100` *(int)*\
@@ -126,7 +128,8 @@ the number of replicate sample foods to solve when calculating the genome qualit
 `ENERGY_FACTOR` `2.0` *(float)*\
 the starting energy of organisms is the genome length * the ENERGY_FACTOR
 
-**Example scripts** (templates for writing your own scripts, won't actually do anything if used)
+##### Example scripts
+(templates for writing your own scripts, won't actually do anything if used)
 
 **custom_genome_manager_template.py**
 `KEY_FOR_EXAMPLE_MUTATION_PROB` `0.001` *(float)*\
@@ -141,7 +144,8 @@ an example
 an example
 
 
-**Cellulator scripts** (scripts belonging to the "Cellulator" build of Simmerpop)
+##### Cellulator scripts
+(scripts belonging to the "Cellulator" build of Simmerpop)
 
 **cellulator_genome_manager.py**
 
@@ -181,22 +185,29 @@ probability of horizontal gene transfer
 **cellulator_energy_io.py**
 `ENERGY_LIMIT` `0` *(int)*\
 a flag indicating the behavior of the energy IO.
-+ 0 = regular addition of energy and no energy pool cap\
-+ 1 = a single burst of energy at the start and an energy pool size limited to the ENERGY_CAP_PROPORTION * POPULATION_CAP\
-+ 2 = a single burst of energy at the start and no energy pool cap\
++ 0 = regular addition of energy and no energy pool cap
++ 1 = a single burst of energy at the start and an energy pool size limited to the ENERGY_CAP_PROPORTION * POPULATION_CAP
++ 2 = a single burst of energy at the start and no energy pool cap
 
-ENERGY_CAP_PROPORTION # (float) <0.25> multiplied by the POPULATION_CAP to determine the energy pool cap limit if the ENERGY_LIMIT flag is set to 1
-NEW_ENERGY_PARCEL_SIZE # (int) <500> the amount of energy in newly added energy parcels 
+`ENERGY_CAP_PROPORTION` `0.25` *(float)*\
+multiplied by the POPULATION_CAP to determine the energy pool cap limit if the ENERGY_LIMIT flag is set to 1
+
+`NEW_ENERGY_PARCEL_SIZE` `500` *(int)*\
+the amount of energy in newly added energy parcels 
 
 
-11. food_type_not.py \
-the energy_reward = n^x-a*A where 
+**food_type_not.py**
+`FOODNOT_BASE_PAYOFF_EXPONENT` `3` *(int)*\
+`FOODNOT_PAYOFF_ADJUSTMENT_FACTOR` `0.1` *(float)*\
+`FOODNOT_REDUCE_PAYOFF_WHEN_OVER` `1.0` *(float)*\
+`FOODNOT_INCREASE_PAYOFF_WHEN_UNDER` `0.5` *(float)*\
+variables that define the energy reward of food such that n^x-a*A where 
 + n = the number of digits correctly solved in the food puzzle
 + x = FOODNOT_BASE_PAYOFF_EXPONENT
 + a = FOODNOT_PAYOFF_ADJUSTMENT_FACTOR
 + A = the adjustment amount
-+ the adjustment amount A increments by 1 per step if the current population size is over FOODNOT_REDUCE_PAYOFF_WHEN_OVER * POPULATION_CAP
-+ the adjustment amount A decrements by 1 per step if the current population size is under FOODNOT_INCREASE_PAYOFF_WHEN_UNDER * POPULATION_CAP
+  + the adjustment amount A increments by 1 per step if the current population size is over FOODNOT_REDUCE_PAYOFF_WHEN_OVER * POPULATION_CAP
+  + the adjustment amount A decrements by 1 per step if the current population size is under FOODNOT_INCREASE_PAYOFF_WHEN_UNDER * POPULATION_CAP
 
 
 

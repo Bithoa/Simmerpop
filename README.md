@@ -57,6 +57,7 @@ Now execute the run_simmerpop.py script
 ```
 run_simmerpop.py
 ```
+If that doesn't work make sure your PATH contains the python dictionary. See [Getting Python]<https://en.wikibooks.org/wiki/Python_Programming/Getting_Python>
 
 
 

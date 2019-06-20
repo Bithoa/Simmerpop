@@ -7,7 +7,7 @@ Simmerpop is a repository of code for conducting virtual life simulations. It wa
 
 
 ## Usage
-The Simmerpop repository is freely available on GitHub at the url  
+The Simmerpop repository is freely available on GitHub at:  
 https://github.com/GoldmanLab/Simmerpop/
 
 To run the simulation, download the entire code repository to the desired location on your machine. 

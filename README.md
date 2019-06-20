@@ -36,7 +36,7 @@ Then run the python 3 script from the Simmerpop root directory.
 If you do not have python 3 installed on your machine, it is available [here](https://www.python.org/downloads/).
 
 #### Mac
-Open the Terminal app (found in Applications -> Utilities) and navigate to the Simmerpop folder from the command line
+> Open the Terminal app (found in Applications -> Utilities) and navigate to the Simmerpop folder from the command line
 Tip: you can simply type cd, then drag and drop the folder from the finder window
 ```
 cd /filepath_example/Simmerpop

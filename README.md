@@ -35,7 +35,7 @@ To run the simulation, download the entire code repository to the desired locati
 Then run the python 3 script from the Simmerpop root directory. 
 If you do not have python 3 installed on your machine, it is available [here](https://www.python.org/downloads/).
 
-##### Mac
+#### Mac
 Open the Terminal app (found in Applications -> Utilities) and navigate to the Simmerpop folder from the command line
 Tip: you can simply type cd, then drag and drop the folder from the finder window
 ```
@@ -51,7 +51,7 @@ Example:
 python3 run_simmerpop.py KEY value
 ```
 
-##### Linux
+#### Linux
 Open the terminal program. In KDE, open the main menu and select "Run Command..." to open Konsole. In GNOME, open the main menu, open the Applications folder, open the Accessories folder, and select Terminal. Navigate to the Simmerpop folder from the command line
 ```
 cd /filepath_example/Simmerpop
@@ -70,7 +70,7 @@ Example:
 python3 run_simmerpop.py KEY value
 ```
 
-##### Windows
+#### Windows
 Open the Windows terminal by going to the Start menu and selecting "Run...", then type ```cmd```. Now navigate to the Simmerpop folder from the command line
 ```
 cd \example_filepath\Simmerpop
@@ -100,7 +100,7 @@ User definable arguments can be added as arguments when running run_simmerpop.py
 Description: where KEY is the keyword to use, default_value is the value used by the model when it is not especified here, and data_type is the type of data, either and integer, float, boolean, or string.
 
 
-##### Simmerpop scripts
+#### Simmerpop scripts
 (common to all Simmerpop runs)
 
 **global_variables.py**  
@@ -149,7 +149,7 @@ the number of replicate sample foods to solve when calculating the genome qualit
 `ENERGY_FACTOR` `2.0` *(float)*\
 the starting energy of organisms is the genome length * the ENERGY_FACTOR
 
-##### Example scripts
+#### Example scripts
 (templates for writing your own scripts, won't actually do anything if used)
 
 **custom_genome_manager_template.py**
@@ -168,7 +168,7 @@ an example
 an example
 
 
-##### Cellulator scripts
+#### Cellulator scripts
 (scripts belonging to the "Cellulator" build of Simmerpop)
 
 **cellulator_genome_manager.py**

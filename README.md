@@ -104,12 +104,16 @@ User definable arguments can be added as arguments when running run_simmerpop.py
 (common to all Simmerpop runs)
  
 + **global_variables.py**  
+
     `MUTATION_INTERVAL` `100` *(int)*\
-    > set how frequently mutation actions are performed\
+    > set how frequently mutation actions are performed
+
     `ENERGY_IO` `cellulator_energy_io` *(string)*\
-    > select what energy IO script to use\
+    > select what energy IO script to use
+
     `FOOD_IO` `cellulator_food_io` *(string)*\
-    > select what food IO script to use\
+    > select what food IO script to use
+
     `GENOME_MANAGER` `cellulator_genome_manager` *(string)*\
     > select what genome manager script to use
 

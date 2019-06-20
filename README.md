@@ -1,10 +1,14 @@
 # Simmerpop
+Simmulation of Emergent Populations
 
 ## Description
+Simmerpop is a repository of code for conducting virtual life simmulations. It was developed with a focus on simmulating early life ecosystems to further our understanding of the origin of life. 
 
 ## Usage
-To use: 
-- Run the python script: python3 run_model.py [arguments] [value]
+To run the simmulation, copy the entire code repository to the desired location on your machine. Then run the python 3 script from the repository's root directory. 
+
+Mac
+- Run the python script: python3 run_model.py [arguments value]
 - Options:
 1. Output folder: output_folder_name [name]
 2. Maximum population capacity: POPULATION_CAP [value]. Test values are 500, 1000, 10000

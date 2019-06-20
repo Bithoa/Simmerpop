@@ -7,15 +7,17 @@ Simmerpop is a repository of code for conducting virtual life simulations. It wa
 
 
 ## Usage
+
 The Simmerpop repository is freely available on GitHub at:  
 https://github.com/GoldmanLab/Simmerpop/
 
+### Instalation and execution
 To run the simulation, download the entire code repository to the desired location on your machine. 
 
 Then run the python 3 script from the Simmerpop root directory. 
 If you do not have python 3 installed on your machine, it is available [here](https://www.python.org/downloads/).
 
-#### Mac
+##### Mac
 Open the Terminal app (found in Applications -> Utilities) and navigate to the Simmerpop folder from the command line
 Tip: you can simply type cd, then drag and drop the folder from the finder window
 ```
@@ -31,7 +33,7 @@ Example:
 python3 run_simmerpop.py KEY value
 ```
 
-#### Linux
+##### Linux
 Open the terminal program. In KDE, open the main menu and select "Run Command..." to open Konsole. In GNOME, open the main menu, open the Applications folder, open the Accessories folder, and select Terminal. Navigate to the Simmerpop folder from the command line
 ```
 cd /filepath_example/Simmerpop
@@ -50,7 +52,7 @@ Example:
 python3 run_simmerpop.py KEY value
 ```
 
-#### Windows
+##### Windows
 Open the Windows terminal by going to the Start menu and selecting "Run...", then type ```cmd```. Now navigate to the Simmerpop folder from the command line
 ```
 cd \example_filepath\Simmerpop
@@ -215,11 +217,29 @@ variables that define the energy reward of food such that n^x-a*A where
   + the adjustment amount A increments by 1 per step if the current population size is over FOODNOT_REDUCE_PAYOFF_WHEN_OVER * POPULATION_CAP
   + the adjustment amount A decrements by 1 per step if the current population size is under FOODNOT_INCREASE_PAYOFF_WHEN_UNDER * POPULATION_CAP
 
+### Customizing scripts
+Three major scripts are designed to be easily interchanged with user created versions. 
++ The genome manager script defines the behavior of and manages organism's genomes
++ The energy in/out script defines the behavior of and manages energy
++ The food in/out script defines the behavior of and manages food
+Each of these has a corresponding folder containing a class definition file (ex. cd_genome_manager.py) and a template (ex. custom_genome_manager_template.py). To implement a custom version of one of these scripts, make a duplicate of the desired template, then rename it to your liking. The general structure for the scripts and their required methods are already implemented in the template.  
+To use your new script, give the script's name as a command line argument when running the script. For example, if you create your own genome manager script named my_genome_manager.py, put it in the genome folder with the other genome managers, and run the following command:
+```
+python3 run_simmerpop.py GENOME_MANAGER my_genome_manager 
+```
+The food and gene types are similarly available to be custamized for use in the "Cellulator" build.  
+If you have a series of interdependent custom scripts, it would be good practice to give them a common name.  
 
 
 ## Support
+For questions regarding or help running the Simmerpop simulation, or to report a bug or unexpected behavior, please contact Yuta A. Takagi at <yutaatakagi@gmail.com>.
+
+For questions about using the Simmerpop simulation in your own research, please contact Dr. Aaron D. Goldman at <agoldman@oberlin.edu>.
 
 ## Contributing
+Anyone is welcome to download, use, and modify the Simmerpop repository to their liking.
+
+If you have created useful or interesting modifications, and would like to contribute them to the distribution version of Simmerpop, please contact Yuta A. Takagi at <yutaatakagi@gmail.com>.
 
 ## Authors and acknowledgment
 Yuta A. Takagi, Diep H. Nguyen, Tom Wexler, Aaron D. Goldman
@@ -227,7 +247,7 @@ Yuta A. Takagi, Diep H. Nguyen, Tom Wexler, Aaron D. Goldman
 Funding for this work was provided by the National Aeronautics and Space Administration, grants 16-IDEAS16-0001 and 80NSSC19M0069, and the National Science Foundation, grant MRI1427949.
 
 ## Selected publications
-The origin of cellularity and organismal individuality through digital life simulations 
+!!Add our paper reference here when published
 
 ## License
-
+!!Add a public license

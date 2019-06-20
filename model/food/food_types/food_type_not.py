@@ -1,5 +1,5 @@
 from ..food_types import cd_food_type
-from ..food_io import food_io_basic
+from ..food_io import cellulator_food_io
 from ... import population_manager
 import random
 

@@ -34,7 +34,7 @@ class EnergyIO(cd_energy_io.EnergyIO):  # this class name cannot be altered. Lea
         self.trash = 0
 	
     def next_step(self):
-        # this method is called by once per time step and is good for modifying global variables that depend on the step count
+        # this method is called once per time step and is good for modifying global variables that depend on the step count
 	
         # this example line increases the EXAMPLE_VARIABLE by 0.01 each step
         EXAMPLE_VARIABLE += 0.01

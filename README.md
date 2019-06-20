@@ -1,14 +1,14 @@
 # Simmerpop
-Simmulation of Emergent Populations
+Simulation of Emergent Populations
 
 ## Description
-Simmerpop is a repository of code for conducting virtual life simmulations. It was developed with a focus on simmulating early life ecosystems to further our understanding of the origin of life. 
+Simmerpop is a repository of code for conducting virtual life simulations. It was developed with a focus on simmulating early life ecosystems to further our understanding of the origin of life. 
 
 ## Usage
 The Simmerpop repository is freely available on GitHub at the url: 
 https://github.com/GoldmanLab/Simmerpop/
 
-To run the simmulation, download the entire code repository to the desired location on your machine. 
+To run the simulation, download the entire code repository to the desired location on your machine. 
 
 Then run the python 3 script from the Simmerpop root directory. 
 If you do not have python 3 installed on your machine, it is available [here](https://www.python.org/downloads/).
@@ -23,7 +23,7 @@ Now execute the run_simmerpop.py script
 ```
 python3 run_simmerpop.py
 ```
-Additional arguments can be provided to change the simmulation's behavior. See [User definable arguments](#user-definable-arguments).  
+Additional arguments can be provided to change the simulation's behavior. See [User definable arguments](#user-definable-arguments).  
 Example:
 ```
 python3 run_simmerpop.py KEY value
@@ -42,7 +42,7 @@ Now execute the run_simmerpop.py script
 ```
 python3 run_simmerpop.py
 ```
-Additional arguments can be provided to change the simmulation's behavior. See [User definable arguments](#user-definable-arguments).  
+Additional arguments can be provided to change the simulation's behavior. See [User definable arguments](#user-definable-arguments).  
 Example:
 ```
 python3 run_simmerpop.py KEY value
@@ -59,13 +59,17 @@ run_simmerpop.py
 ```
 If that doesn't work make sure your PATH contains the python dictionary. See [how to get python](https://en.wikibooks.org/wiki/Python_Programming/Getting_Python).
 
-Additional arguments can be provided to change the simmulation's behavior. See [User definable arguments](#user-definable-arguments).  
+Additional arguments can be provided to change the simulation's behavior. See [User definable arguments](#user-definable-arguments).  
 Example:
 ```
 run_simmerpop.py KEY value
 ```
 
 ### User definable arguments
+* User definable arguments can be added as arguments when running run_simmerpop.py from the command line. Each argument comes as a `KEY value` pair. Any number of these pairs can be given as arguments in any order. 
+Most `KEY`s simply change a simulation constant (such as the starting population size) to the given `value` overriding the default value. 
+* Some `KEY`s change the simulation's behavior, following a ruleset denoted by the given `value`. 
+* Some `KEYS`s are used to indicate a different user definable script by giving its name as the `value`. This allows users to program their own versions of specific modules to behave in new ways, without overwriting existing modules. 
 
 1. global_variables.py\
 MUTATION_INTERVAL # (int) <100> set how frequently mutation actions are performed\
@@ -127,12 +131,6 @@ the energy_reward = n^x-a*A where
 + A = the adjustment amount
 + the adjustment amount A increments by 1 per step if the current population size is over FOODNOT_REDUCE_PAYOFF_WHEN_OVER * POPULATION_CAP
 + the adjustment amount A decrements by 1 per step if the current population size is under FOODNOT_INCREASE_PAYOFF_WHEN_UNDER * POPULATION_CAP
-FOODNOT_BASE_PAYOFF_EXPONENT # (int) <3> 
-FOODNOT_PAYOFF_ADJUSTMENT_FACTOR (float) <0.1>
-FOODNOT_REDUCE_PAYOFF_WHEN_OVER (float) <1.0>
-FOODNOT_INCREASE_PAYOFF_WHEN_UNDER (float) <0.5>
-
-
 
 
 

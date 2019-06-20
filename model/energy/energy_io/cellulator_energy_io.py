@@ -43,8 +43,6 @@ class EnergyIO(cd_energy_io.EnergyIO):  # this class name cannot be altered. Lea
             NEW_ENERGY_PARCEL_SIZE = global_variables.parameters.get('NEW_ENERGY_PARCEL_SIZE')
 
     def next_step(self):
-        global ENERGY_LIMIT
-        global NEW_ENERGY_PARCEL_SIZE
         # if energy is unlimited
         if ENERGY_LIMIT == 0:
             # add energy at a regular intervals

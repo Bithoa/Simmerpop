@@ -2,17 +2,16 @@
 Simulation of Emergent Populations
 
 [Description](#description)\
-[Usage](#usage)
-+ [Instalation and execution](#instalation-and-execution)
-    + [Mac](#mac)
-    + [Linux](#linux)
-    + [Windows](#windows)
-+ [User definable arguments](#user-definable-arguments)
-    + [Simmerpop scripts](#simmerpop-scripts)
-    + [Example scripts](#example-scripts)
-    + [Cellulator scripts](#cellulator-scripts)
-+ [Customizing scripts](#customizing-scripts)
-
+[Usage](#usage)\
+ \- [Instalation and execution](#instalation-and-execution)\
+    \- [Mac](#mac)\
+    \- [Linux](#linux)\
+    \- [Windows](#windows)\
+ \- [User definable arguments](#user-definable-arguments)\
+    \- [Simmerpop scripts](#simmerpop-scripts)\
+    \- [Example scripts](#example-scripts)\
+    \- [Cellulator scripts](#cellulator-scripts)\
+ \- [Customizing scripts](#customizing-scripts)\
 [Support](#support)\
 [Contributing](#contributing)\
 [Authors and acknowledgment](#Authors-and-acknowledgment)\

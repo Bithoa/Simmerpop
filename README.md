@@ -1,8 +1,10 @@
 # Simmerpop
 Simulation of Emergent Populations
 
+
 ## Description
 Simmerpop is a repository of code for conducting virtual life simulations. It was developed with a focus on simmulating early life ecosystems to further our understanding of the origin of life. 
+
 
 ## Usage
 The Simmerpop repository is freely available on GitHub at the url: 
@@ -65,15 +67,16 @@ Example:
 run_simmerpop.py KEY value
 ```
 
+
 ### User definable arguments
 User definable arguments can be added as arguments when running run_simmerpop.py from the command line. Each argument comes as a `KEY` `value` pair. Any number of these pairs can be given as arguments in any order. 
 * Most `KEY`s simply change a simulation constant (such as the starting population size) to the given `value` overriding the default value. 
 * Some `KEY`s change the simulation's behavior, following a ruleset denoted by the given `value`. 
 * Some `KEYS`s are used to indicate a different user definable script by giving its name as the `value`. This allows users to program their own versions of specific modules to behave in new ways, without overwriting existing modules. 
 
-`KEY``value` pairs are listed below organized by which scripts they modify. They are given in the format:
+`KEY` `value` pairs are listed below organized by which scripts they modify. They are given in the format:
 
-`KEY``default_value` *(data_type)*\
+`KEY` `default_value` *(data_type)*\
 Description: where KEY is the keyword to use, default_value is the value used by the model when it is not especified here, and data_type is the type of data, either and integer, float, boolean, or string.
 
 
@@ -85,11 +88,18 @@ set how frequently mutation actions are performed
 `ENERGY_IO` `cellulator_energy_io` *(string)*\
 select what energy IO script to use
 
-FOOD_IO # (string) <'cellulator_food_io'> select what food IO script to use\
-GENOME_MANAGER # (string) <'cellulator_genome_manager'> select what genome manager script to use\
+`FOOD_IO` `cellulator_food_io` *(string)*\
+select what food IO script to use
 
-2. analytics.py\
-OUTPUT_FOLDER_NAME # (string) <'default_folder_name'> a folder name for the results folder\
+`GENOME_MANAGER` `cellulator_genome_manager` *(string)*\
+select what genome manager script to use
+
+
+**analytics.py**
+
+`OUTPUT_FOLDER_NAME` `default_folder_name` *(string)*\
+a folder name for the results folder
+
 
 3. population_manager.py\
 POPULATION_CAP # (int) <10000> the maximum population\

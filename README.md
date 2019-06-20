@@ -71,8 +71,14 @@ User definable arguments can be added as arguments when running run_simmerpop.py
 * Some `KEY`s change the simulation's behavior, following a ruleset denoted by the given `value`. 
 * Some `KEYS`s are used to indicate a different user definable script by giving its name as the `value`. This allows users to program their own versions of specific modules to behave in new ways, without overwriting existing modules. 
 
-1. global_variables.py\
-MUTATION_INTERVAL # (int) <100> set how frequently mutation actions are performed\
+`KEY value` pairs are listed below organized by which scripts they modify. They are given in the format:
+`KEY default_value` (data_type)
+*Description*
+
+
+**global_variables.py**
+`MUTATION_INTERVAL 100` (int) 
+*set how frequently mutation actions are performed*
 ENERGY_IO # (string) <'cellulator_energy_io'> select what energy IO script to use\
 FOOD_IO # (string) <'cellulator_food_io'> select what food IO script to use\
 GENOME_MANAGER # (string) <'cellulator_genome_manager'> select what genome manager script to use\

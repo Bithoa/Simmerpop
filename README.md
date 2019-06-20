@@ -264,6 +264,8 @@ Anyone is welcome to download, use, and modify the Simmerpop repository to their
 
 If you have created useful or interesting modifications, and would like to contribute them to the distribution version of Simmerpop, please contact Yuta A. Takagi at <yutaatakagi@gmail.com>.
 
+Simmerpop was developed on MacOS, we would appreciate any assistance with testing on Windows or Linux systems. 
+
 ## Authors and acknowledgment
 Yuta A. Takagi, Diep H. Nguyen, Tom Wexler, Aaron D. Goldman
 

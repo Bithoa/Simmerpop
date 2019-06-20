@@ -1,3 +1,4 @@
+# cd_food_io.py
 from ... import global_variables
 import itertools
 
@@ -16,32 +17,32 @@ make_f_hash_iterator = iter(ALPHA)
 
 # makes a unique id for food
 def make_food_id():
-    global make_f_hash_depth
-    global make_f_hash_iterator
-    try:
-        return 'f*' + ''.join(next(make_f_hash_iterator))
-    except StopIteration:
-        make_f_hash_depth += 1
-        make_f_hash_iterator = itertools.product(ALPHA, repeat=make_f_hash_depth)
-        return 'f*' + ''.join(next(make_f_hash_iterator))
+	global make_f_hash_depth
+	global make_f_hash_iterator
+	try:
+		return 'f*' + ''.join(next(make_f_hash_iterator))
+	except StopIteration:
+		make_f_hash_depth += 1
+		make_f_hash_iterator = itertools.product(ALPHA, repeat=make_f_hash_depth)
+		return 'f*' + ''.join(next(make_f_hash_iterator))
 
 
 # the 'FoodIO' parent class
 class FoodIO:
-    def __init__(self):
-        pass
-    
-    def next_step(self):
-        pass
+	def __init__(self):
+		pass
+	
+	def next_step(self):
+		pass
 
-    def get_food(self):
-        raise NotImplementedError
+	def get_food(self):
+		raise NotImplementedError
 
-    def get_test_food(self):
-        raise NotImplementedError
+	def get_test_food(self):
+		raise NotImplementedError
 
-    def discard_food(self, food_to_discard):
-        raise NotImplementedError
+	def discard_food(self, food_to_discard):
+		raise NotImplementedError
 
-    def init_food_from_string_repr(self, string_repr):
-        raise NotImplementedError
+	def init_food_from_string_repr(self, string_repr):
+		raise NotImplementedError

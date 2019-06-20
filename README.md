@@ -122,6 +122,7 @@ a folder name for the results folder
 
 
 **organism.py**
+
 `METABOLIC_QUALITY_CHECK_COUNT` `1000` *(int)*\
 the number of replicate sample foods to solve when calculating the genome quality
 
@@ -132,14 +133,17 @@ the starting energy of organisms is the genome length * the ENERGY_FACTOR
 (templates for writing your own scripts, won't actually do anything if used)
 
 **custom_genome_manager_template.py**
+
 `KEY_FOR_EXAMPLE_MUTATION_PROB` `0.001` *(float)*\
 template example for implementing key value pairs
 
 **custom_energy_io_template.py**
+
 `EXAMPLE_VARIABLE` `0.1` *(float)*\
 an example
 
 **custom_food_io_template.py**
+
 `EXAMPLE_VARIABLE` `0.1` *(float)*\
 an example
 
@@ -183,6 +187,7 @@ probability of horizontal gene transfer
 
 
 **cellulator_energy_io.py**
+
 `ENERGY_LIMIT` `0` *(int)*\
 a flag indicating the behavior of the energy IO.
 + 0 = regular addition of energy and no energy pool cap
@@ -197,6 +202,7 @@ the amount of energy in newly added energy parcels
 
 
 **food_type_not.py**
+
 `FOODNOT_BASE_PAYOFF_EXPONENT` `3` *(int)*\
 `FOODNOT_PAYOFF_ADJUSTMENT_FACTOR` `0.1` *(float)*\
 `FOODNOT_REDUCE_PAYOFF_WHEN_OVER` `1.0` *(float)*\

@@ -31,7 +31,10 @@ def make_gene_id():
 class GenomeManager:
     def __init__(self):
         pass
-
+    
+    def next_step(self):
+        pass
+    
     def make_genome(self, organism):
         raise NotImplementedError
 

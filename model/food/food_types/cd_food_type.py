@@ -1,3 +1,4 @@
+# cd_food_type.py
 from ... import global_variables
 
 __author__ = 'Yuta A. Takagi'
@@ -9,13 +10,13 @@ __author__ = 'Yuta A. Takagi'
 
 # the 'Food' parent class
 class Food:
-    def __init__(self):
-        self.inputs = [None, None, None, None, None, None, None, None]
-        self.solution = [None, None, None, None, None, None, None, None]
-        self.id = None
+	def __init__(self):
+		self.inputs = [None, None, None, None, None, None, None, None]
+		self.solution = [None, None, None, None, None, None, None, None]
+		self.id = None
 
-    def __repr__(self):
-        raise NotImplementedError
+	def __repr__(self):
+		raise NotImplementedError
 
-    def check_solution(self):
-        raise NotImplementedError
+	def check_solution(self):
+		raise NotImplementedError

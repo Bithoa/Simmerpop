@@ -1,5 +1,5 @@
+# cellulator_energy_io.py
 from ... import global_variables
-from ... import population_manager
 from . import cd_energy_io
 import random
 import os
@@ -27,63 +27,69 @@ NEW_ENERGY_PARCEL_SIZE = 500
 
 
 # the EnergyIO class for the cellulator study
-class EnergyIO(cd_energy_io.EnergyIO):  # this class name cannot be altered. Leave as 'EnergyIO'
-    # initializes the class instance
-    def __init__(self):
-        self.loose_energy_parcels = []
+class EnergyIO(cd_energy_io.EnergyIO):	# this class name cannot be altered. Leave as 'EnergyIO'
+	# initializes the class instance
+	def __init__(self):
+		global ENERGY_LIMIT
+		global LOOSE_ENERGY_POOL_CAP_SIZE_PROPORTION
+		global LOOSE_ENERGY_POOL_CAP
+		global NEW_ENERGY_PARCEL_SIZE
+		self.loose_energy_parcels = []
 
-        if 'ENERGY_LIMIT' in global_variables.parameters.keys():
-            ENERGY_LIMIT = global_variables.parameters.get('ENERGY_LIMIT')
-        if 'ENERGY_CAP_PROPORTION' in global_variables.parameters.keys():
-            LOOSE_ENERGY_POOL_CAP_SIZE_PROPORTION = float(global_variables.parameters.get('ENERGY_CAP_PROPORTION'))
-        if ENERGY_LIMIT == 1:
-            LOOSE_ENERGY_POOL_CAP = LOOSE_ENERGY_POOL_CAP_SIZE_PROPORTION*population_manager.POPULATION_CAP
+		if 'ENERGY_LIMIT' in global_variables.parameters.keys():
+			ENERGY_LIMIT = int(global_variables.parameters.get('ENERGY_LIMIT'))
+		if 'ENERGY_CAP_PROPORTION' in global_variables.parameters.keys():
+			LOOSE_ENERGY_POOL_CAP_SIZE_PROPORTION = float(global_variables.parameters.get('ENERGY_CAP_PROPORTION'))
+		if ENERGY_LIMIT == 1:
+			LOOSE_ENERGY_POOL_CAP = LOOSE_ENERGY_POOL_CAP_SIZE_PROPORTION*global_variables.POPULATION_CAP
+		if 'NEW_ENERGY_PARCEL_SIZE' in global_variables.parameters.keys():
+			NEW_ENERGY_PARCEL_SIZE = int(global_variables.parameters.get('NEW_ENERGY_PARCEL_SIZE'))
 
-        if 'NEW_ENERGY_PARCEL_SIZE' in global_variables.parameters.keys():
-            NEW_ENERGY_PARCEL_SIZE = global_variables.parameters.get('NEW_ENERGY_PARCEL_SIZE')
+	def next_step(self):
+		global ENERGY_LIMIT
+		# if energy is unlimited
+		if ENERGY_LIMIT == 0:
+			# add energy at a regular intervals
+			if global_variables.step_num % global_variables.MUTATION_INTERVAL == 0:
+				self.add_energy()
+		# if energy is limited, add energy at start, then cull the energy pool every step
+		elif ENERGY_LIMIT == 1:
+			# add energy at step 0
+			if global_variables.step_num == 0:
+				self.add_energy()
+			# limit energy abundance to the capacity at every step
+			self.cull_energy_pool()
+		# if there is only a burst of energy at step 0, add energy at step 0
+		else:
+			if global_variables.step_num == 0:
+				self.add_energy()
 
-    def next_step(self):
-        # if energy is unlimited
-        if ENERGY_LIMIT == 0:
-            # add energy at a regular intervals
-            if global_variables.step_num % global_variables.MUTATION_INTERVAL == 0:
-                self.add_energy()
-        # if energy is limited, add energy at start, then cull the energy pool every step
-        elif ENERGY_LIMIT == 1:
-            # add energy at step 0
-            if global_variables.step_num == 0:
-                self.add_energy()
-            # limit energy abundance to the capacity at every step
-            self.cull_energy_pool()
-        # if there is only a burst of energy at step 0, add energy at step 0
-        else:
-            if global_variables.step_num == 0:
-                self.add_energy()
+	# adds energy to the environment
+	def add_energy(self):
+		global NEW_ENERGY_PARCEL_SIZE
+		for i in range(global_variables.POPULATION_CAP):
+			self.loose_energy_parcels.append(NEW_ENERGY_PARCEL_SIZE)
 
-    # adds energy to the environment
-    def add_energy(self):
-        for i in range(population_manager.POPULATION_CAP):
-            self.loose_energy_parcels.append(NEW_ENERGY_PARCEL_SIZE)
+	# returns a random energy parcel from the energy pool
+	def get_energy(self, organism):
+		temp = len(self.loose_energy_parcels)
+		if temp > 0:  # if energy is gained
+			return self.loose_energy_parcels.pop(random.randint(0, temp - 1))
+		else:
+			return 0
 
-    # returns a random energy parcel from the energy pool
-    def get_energy(self, organism):
-        temp = len(self.loose_energy_parcels)
-        if temp > 0:  # if energy is gained
-            return self.loose_energy_parcels.pop(random.randint(0, temp - 1))
-        else:
-            return 0
+	# removes a random amount of energy from an organism up to half its currently stored amount, and adds it as a parcel to the energy pool
+	def discard_energy(self, organism):
+		# returns a random amount of energy up to half of the organism's energy stock
+		maximum = organism.energy / 2
+		to_lose = maximum*random.random()
+		self.loose_energy_parcels.append(to_lose)
+		return to_lose
 
-    # removes a random amount of energy from an organism up to half its currently stored amount, and adds it as a parcel to the energy pool
-    def discard_energy(self, organism):
-        # returns a random amount of energy up to half of the organism's energy stock
-        maximum = organism.energy / 2
-        to_lose = maximum*random.random()
-        self.loose_energy_parcels.append(to_lose)
-        return to_lose
-
-    # removes random energy parcels if over energy pool cap
-    def cull_energy_pool(self):
-        while len(self.loose_energy_parcels) > LOOSE_ENERGY_POOL_CAP:
-            remove_me = random.randint(0, len(self.loose_energy_parcels) - 1)
-            self.loose_energy_parcels.pop(remove_me)
+	# removes random energy parcels if over energy pool cap
+	def cull_energy_pool(self):
+		global LOOSE_ENERGY_POOL_CAP
+		while len(self.loose_energy_parcels) > LOOSE_ENERGY_POOL_CAP:
+			remove_me = random.randint(0, len(self.loose_energy_parcels) - 1)
+			self.loose_energy_parcels.pop(remove_me)
 

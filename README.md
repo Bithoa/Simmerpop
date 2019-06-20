@@ -225,7 +225,7 @@ and so on.
 
 + **food_type_not.py**
 
-    `FOODNOT_BASE_PAYOFF_EXPONENT` `3` *(int)*\
+    `FOODNOT_BASE_PAYOFF_EXPONENT` `3.0` *(float)*\
     `FOODNOT_PAYOFF_ADJUSTMENT_FACTOR` `0.1` *(float)*\
     `FOODNOT_REDUCE_PAYOFF_WHEN_OVER` `1.0` *(float)*\
     `FOODNOT_INCREASE_PAYOFF_WHEN_UNDER` `0.5` *(float)*

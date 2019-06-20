@@ -92,5 +92,5 @@ class FoodNot(cd_food_type.Food):  # the not of the input
 		if reward < 0:
 			reward = 0
 		return reward
-			
+
 

@@ -11,7 +11,7 @@ https://github.com/GoldmanLab/Simmerpop/
 To run the simmulation, download the entire code repository to the desired location on your machine. 
 
 Then run the python 3 script from the Simmerpop root directory. 
-If you do not have python 3 installed on your machine, it is available at [here](https://www.python.org/downloads/)
+If you do not have python 3 installed on your machine, it is available at [here](https://www.python.org/downloads/).
 
 #### Mac
 Open the Terminal app (found in Applications -> Utilities) and navigate to the Simmerpop folder from the command line
@@ -57,23 +57,13 @@ Now execute the run_simmerpop.py script
 ```
 run_simmerpop.py
 ```
-If that doesn't work make sure your PATH contains the python dictionary. See [Getting Python](https://en.wikibooks.org/wiki/Python_Programming/Getting_Python)
+If that doesn't work make sure your PATH contains the python dictionary. See [how to get python](https://en.wikibooks.org/wiki/Python_Programming/Getting_Python).
 
-
-
-- Run the python script: python3 run_model.py [arguments value]
-- Options:
-1. Output folder: output_folder_name [name]
-2. Maximum population capacity: POPULATION_CAP [value]. Test values are 500, 1000, 10000
-3. Mutation probability: MUTATION_PROB [value]. Test value: 0.005, between 0 and 1. 
-4. Horizontal gene transfer probability: HGT_PROB [value]. Test values: 0.1 and 0.5, between 0 and 1. 
-5. Number of initial cellularity genes: NUM_CELLGENE [value]. Test values: 0 and 3, between 0 and 8.
-6. Energy limit: ENERGY_LIM [value]
-+ value == 0: no energy limit
-+ value == 1: limit energy abundance to 25% of the maximum population capacity 
-+ value == 2: sufficient energy at step 0 and no replenishment over time 
-
-E.g: python3 run_model.py output_folder_name Testing POPULATION_CAP 1000 NUM_CELLGENE 3 ENERGY_LIM 2 
+Additional arguments can be provided to change the simmulation's behavior. See "User definable arguments"
+Example:
+```
+python3 run_simmerpop.py KEY value
+```
 
 ### User definable arguments
 

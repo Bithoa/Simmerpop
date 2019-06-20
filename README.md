@@ -212,7 +212,8 @@ and so on.
     `ENERGY_LIMIT` `0` *(int)*
     > a flag indicating the behavior of the energy IO.
     > + 0 = regular addition of energy and no energy pool cap
-    > + 1 = a single burst of energy at the start and an energy pool size limited to the ENERGY_CAP_PROPORTION * POPULATION_CAP
+    > + 1 = a single burst of energy at the start and an energy pool size limited to the \
+        ENERGY_CAP_PROPORTION * POPULATION_CAP
     > + 2 = a single burst of energy at the start and no energy pool cap
 
     `ENERGY_CAP_PROPORTION` `0.25` *(float)*
@@ -228,12 +229,12 @@ and so on.
     `FOODNOT_PAYOFF_ADJUSTMENT_FACTOR` `0.1` *(float)*\
     `FOODNOT_REDUCE_PAYOFF_WHEN_OVER` `1.0` *(float)*\
     `FOODNOT_INCREASE_PAYOFF_WHEN_UNDER` `0.5` *(float)*
-    > variables that define the energy reward of food such that n^x-a*A where\ 
-    > + n = the number of digits correctly solved in the food puzzle\
-    > + x = FOODNOT_BASE_PAYOFF_EXPONENT\
-    > + a = FOODNOT_PAYOFF_ADJUSTMENT_FACTOR\
-    > + A = the adjustment amount\
-    >     + the adjustment amount A increments by 1 per step if the current population size is over FOODNOT_REDUCE_PAYOFF_WHEN_OVER * POPULATION_CAP\
+    > variables that define the energy reward of food such that n^x-a\*A where
+    > + n = the number of digits correctly solved in the food puzzle
+    > + x = FOODNOT_BASE_PAYOFF_EXPONENT
+    > + a = FOODNOT_PAYOFF_ADJUSTMENT_FACTOR
+    > + A = the adjustment amount
+    >     + the adjustment amount A increments by 1 per step if the current population size is over FOODNOT_REDUCE_PAYOFF_WHEN_OVER * POPULATION_CAP
     >     + the adjustment amount A decrements by 1 per step if the current population size is under FOODNOT_INCREASE_PAYOFF_WHEN_UNDER * POPULATION_CAP
 
 ### Customizing scripts

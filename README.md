@@ -224,6 +224,7 @@ Three major scripts are designed to be easily interchanged with user created ver
 + The food in/out script defines the behavior of and manages food  
 
 Each of these has a corresponding folder containing a class definition file (ex. cd_genome_manager.py) and a template (ex. custom_genome_manager_template.py). To implement a custom version of one of these scripts, make a duplicate of the desired template, then rename it to your liking. The general structure for the scripts and their required methods are already implemented in the template.  
+
 To use your new script, give the script's name as a command line argument when running the script. For example, if you create your own genome manager script named my_genome_manager.py, put it in the genome folder with the other genome managers, and run the following command:
 ```
 python3 run_simmerpop.py GENOME_MANAGER my_genome_manager 

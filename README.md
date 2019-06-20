@@ -11,7 +11,7 @@ https://github.com/GoldmanLab/Simmerpop/
 To run the simmulation, download the entire code repository to the desired location on your machine. 
 
 Then run the python 3 script from the Simmerpop root directory. 
-If you do not have python 3 installed on your machine, it is available at https://www.python.org/downloads/
+If you do not have python 3 installed on your machine, it is available at [here](https://www.python.org/downloads/)
 
 #### Mac
 Open the Terminal app (found in Applications -> Utilities) and navigate to the Simmerpop folder from the command line
@@ -57,7 +57,7 @@ Now execute the run_simmerpop.py script
 ```
 run_simmerpop.py
 ```
-If that doesn't work make sure your PATH contains the python dictionary. See [Getting Python]<https://en.wikibooks.org/wiki/Python_Programming/Getting_Python>
+If that doesn't work make sure your PATH contains the python dictionary. See [Getting Python](https://en.wikibooks.org/wiki/Python_Programming/Getting_Python)
 
 
 

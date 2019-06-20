@@ -24,6 +24,7 @@ Now execute the run_simmerpop.py script
 python3 run_simmerpop.py
 ```
 Additional arguments can be provided to change the simmulation's behavior. See [User definable arguments](#user-definable-arguments).
+
 Example:
 ```
 python3 run_simmerpop.py KEY value

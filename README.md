@@ -96,8 +96,8 @@ User definable arguments can be added as arguments when running run_simmerpop.py
 
 `KEY` `value` pairs are listed below organized by which scripts they modify. They are given in the format:
 
-> `KEY` `default_value` *(data_type)*\
-Description: where KEY is the keyword to use, default_value is the value used by the model when it is not especified here, and data_type is the type of data, either and integer, float, boolean, or string.
+`KEY` `default_value` *(data_type)*\
+> Description: where KEY is the keyword to use, default_value is the value used by the model when it is not especified here, and data_type is the type of data, either and integer, float, boolean, or string.
 
 
 #### Simmerpop scripts
@@ -105,17 +105,17 @@ Description: where KEY is the keyword to use, default_value is the value used by
  
 + **global_variables.py**  
 
-> `MUTATION_INTERVAL` `100` *(int)*\
-set how frequently mutation actions are performed
+ `MUTATION_INTERVAL` `100` *(int)*\
+    > set how frequently mutation actions are performed
 
-> `ENERGY_IO` `cellulator_energy_io` *(string)*\
-select what energy IO script to use
+ `ENERGY_IO` `cellulator_energy_io` *(string)*\
+    > select what energy IO script to use
 
-> `FOOD_IO` `cellulator_food_io` *(string)*\
-select what food IO script to use
+ `FOOD_IO` `cellulator_food_io` *(string)*\
+    > select what food IO script to use
 
-> `GENOME_MANAGER` `cellulator_genome_manager` *(string)*\
-select what genome manager script to use
+ `GENOME_MANAGER` `cellulator_genome_manager` *(string)*\
+    > select what genome manager script to use
 
 
 + **population_manager.py**

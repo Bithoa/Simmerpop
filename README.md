@@ -80,6 +80,7 @@ User definable arguments can be added as arguments when running run_simmerpop.py
 Description: where KEY is the keyword to use, default_value is the value used by the model when it is not especified here, and data_type is the type of data, either and integer, float, boolean, or string.
 
 
+**Simmerpop scripts** (common to all Simmerpop runs)
 **global_variables.py**  
 
 `MUTATION_INTERVAL` `100` *(int)*\
@@ -95,54 +96,98 @@ select what food IO script to use
 select what genome manager script to use
 
 
+**population_manager.py**
+
+`POPULATION_CAP` `10000` *(int)*\
+the maximum population
+
+`START_POPULATION` `10000` *(int)*\
+the starting population number
+
+
+**end_conditions.py**
+`MAX_NUM_STEPS` `100000` *(int)*\
+the maximum number of steps to run
+
+`MAX_RUN_TIME` `6000` *(int)*\
+the maximum runtime in minutes
+
+
 **analytics.py**
 
 `OUTPUT_FOLDER_NAME` `default_folder_name` *(string)*\
 a folder name for the results folder
 
 
-3. population_manager.py\
-POPULATION_CAP # (int) <10000> the maximum population\
-START_POPULATION # (int) <10000> the starting population number\
+**organism.py**
+`METABOLIC_QUALITY_CHECK_COUNT` `1000` *(int)*\
+the number of replicate sample foods to solve when calculating the genome quality
 
-4. end_conditions.py\
-MAX_NUM_STEPS # (int) <100000> the maximum number of steps to run\
-MAX_RUN_TIME # (int) <6000> the maximum runtime in minutes\
+`ENERGY_FACTOR` `2.0` *(float)*\
+the starting energy of organisms is the genome length * the ENERGY_FACTOR
 
-5. organism.py\
-METABOLIC_QUALITY_CHECK_COUNT # (int) <1000> the number of replicate sample foods to solve when calculating the genome quality\
-ENERGY_FACTOR # (float) <2.0> the starting energy of organisms is the genome length * the ENERGY_FACTOR\
+**Example scripts** (templates for writing your own scripts, won't actually do anything if used)
 
-6. template_genome_manager.py\
-KEY_FOR_EXAMPLE_MUTATION_PROB # (float) <0.001> template example for implementing key value pairs.\
+**custom_genome_manager_template.py**
+`KEY_FOR_EXAMPLE_MUTATION_PROB` `0.001` *(float)*\
+template example for implementing key value pairs
 
-7. cellulator_genome_manager.py\
-LOOSE_GENE_POOL_CAP # (int) <1000> max number of loose genome fragments\
-MUTATION_PROB # (float) <0.005> the probability of a mutation occuring \
-POINTER_MUT_PROB # (float) <MUTATION_PROB> probability of a gene pointer mutating \
-DELETION_PROB # (float) <MUTATION_PROB> probability of a gene being deleted \
-INSERTION_PROB # (float) <MUTATION_PROB> probability of a gene being inserted between each gene \
-INS_GET_WT # (int) <10> the relative proportion of 'GeneGet' genes being inserted\
-INS_PUT_WT # (int) <10> the relative proportion of 'GenePut' genes being inserted\
-INS_NAND_WT # (int) <30> the relative proportion of 'GeneNAND' genes being inserted\
-INS_CELL_WT # (int) <5> the relative proportion of 'GeneCellularity' genes being inserted\
-GENOME_BREAK_PROB # (float) <0.1> probability of a genome fragmenting after each gene\
-NUM_CELLGENES # (int) <0> initial number of cellularity genes in the starting genome\
-HGT_PROB # (float) <0.5> probability of horizontal gene transfer \
+**custom_energy_io_template.py**
+`EXAMPLE_VARIABLE` `0.1` *(float)*\
+an example
 
-8. custom_energy_io_template.py\
-EXAMPLE_VARIABLE # (float) <0.1> an example\
+**custom_food_io_template.py**
+`EXAMPLE_VARIABLE` `0.1` *(float)*\
+an example
 
-9. cellulator_energy_io.py
-ENERGY_LIMIT 	# (int) # <0> a flag indicating the behavior of the energy IO. 
+
+**Cellulator scripts** (scripts belonging to the "Cellulator" build of Simmerpop)
+
+**cellulator_genome_manager.py**
+
+`LOOSE_GENE_POOL_CAP` `1000` *(int)*\
+max number of loose genome fragments
+
+`MUTATION_PROB` `0.005` *(float)*\
+the probability of a mutation occuring
+
+`POINTER_MUT_PROB` `MUTATION_PROB` *(float)*\
+probability of a gene pointer mutating
+
+`DELETION_PROB` `MUTATION_PROB` *(float)*\
+probability of a gene being deleted
+
+`INSERTION_PROB` `MUTATION_PROB` *(float)*\
+probability of any gene type being inserted between each gene
+
+`INS_GET_WT` `10` *(int)*\
+`INS_PUT_WT` `10` *(int)*\
+`INS_NAND_WT` `30` *(int)*\
+`INS_CELL_WT` `5` *(int)*\
+the relative proportion of *GeneGet*, *GenePut*, *GeneNAND*, and *GeneCellularity* genes being inserted such that the probability of a *GeneGet* insertion mutation is\
+INS_GET_WT * INSERTION_PROB / (INS_GET_WT + INS_PUT_WT + INS_NAND_WT + INS_CELL_WT)\
+and so on. 
+
+`GENOME_BREAK_PROB` `0.1` *(float)*\
+probability of a genome fragmenting after each gene
+
+`NUM_CELLGENES` `0` *(int)*\
+initial number of cellularity genes in the starting genome
+
+`HGT_PROB` `0.5` *(float)*\
+probability of horizontal gene transfer
+
+
+**cellulator_energy_io.py**
+`ENERGY_LIMIT` `0` *(int)*\
+a flag indicating the behavior of the energy IO.
 + 0 = regular addition of energy and no energy pool cap\
-+ 1 = a single burst of energy at the start and an energy pool size limited to the ENERGY_CAP_PROPORTION*POPULATION_CAP
-+ 2 = a single burst of energy at the start and no energy pool cap \
++ 1 = a single burst of energy at the start and an energy pool size limited to the ENERGY_CAP_PROPORTION * POPULATION_CAP\
++ 2 = a single burst of energy at the start and no energy pool cap\
+
 ENERGY_CAP_PROPORTION # (float) <0.25> multiplied by the POPULATION_CAP to determine the energy pool cap limit if the ENERGY_LIMIT flag is set to 1
 NEW_ENERGY_PARCEL_SIZE # (int) <500> the amount of energy in newly added energy parcels 
 
-10. custom_food_io_template.py\
-EXAMPLE_VARIABLE # (float) <0.1> an example\
 
 11. food_type_not.py \
 the energy_reward = n^x-a*A where 

@@ -62,7 +62,7 @@ If that doesn't work make sure your PATH contains the python dictionary. See [ho
 Additional arguments can be provided to change the simmulation's behavior. See "User definable arguments"
 Example:
 ```
-python3 run_simmerpop.py KEY value
+run_simmerpop.py KEY value
 ```
 
 ### User definable arguments

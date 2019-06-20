@@ -219,9 +219,9 @@ variables that define the energy reward of food such that n^x-a*A where
 
 ### Customizing scripts
 Three major scripts are designed to be easily interchanged with user created versions. 
-+ The genome manager script defines the behavior of and manages organism's genomes
-+ The energy in/out script defines the behavior of and manages energy
-+ The food in/out script defines the behavior of and manages food
++ The genome manager script defines the behavior of and manages organism's genomes  
++ The energy in/out script defines the behavior of and manages energy  
++ The food in/out script defines the behavior of and manages food  
 Each of these has a corresponding folder containing a class definition file (ex. cd_genome_manager.py) and a template (ex. custom_genome_manager_template.py). To implement a custom version of one of these scripts, make a duplicate of the desired template, then rename it to your liking. The general structure for the scripts and their required methods are already implemented in the template.  
 To use your new script, give the script's name as a command line argument when running the script. For example, if you create your own genome manager script named my_genome_manager.py, put it in the genome folder with the other genome managers, and run the following command:
 ```

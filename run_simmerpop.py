@@ -77,7 +77,7 @@ def main():
         # reduce to population cap size
         population_manager.cull_organisms()
 
-        # YUTA: reduce loose gene pool size to cap
+        # perform the next step for the genome manager
         global_variables.GENOME_MANAGER.next_step()
 
         # perform the next step for the food in/out

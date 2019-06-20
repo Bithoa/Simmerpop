@@ -51,7 +51,7 @@ def main():
         # disposes of dead organisms
         population_manager.clean_carcasses()
 
-        # add energy to the environment
+        # perform the next step for the energy in/out
         global_variables.ENERGY_IO.next_step()
 
         # replicates organisms with enough energy
@@ -78,15 +78,15 @@ def main():
         population_manager.cull_organisms()
 
         # YUTA: reduce loose gene pool size to cap
-        global_variables.GENOME_MANAGER.cull_genome_fragments_pool()
+        global_variables.GENOME_MANAGER.next_step()
 
-        # YUTA: necessary for the FoodNot type
-        food_type_not.calc_food_payoff_reduction_factor()
+        # perform the next step for the food in/out
+        global_variables.FOOD_IO.next_step()
 
         # analyze and log
         analytics.analyze()
 
-        # perform the next step in for each organism
+        # perform the next step for each organism
         population_manager.organisms_next_step()
 
         # stops the model if there are no organisms left alive

@@ -84,7 +84,7 @@ class GenomeManager(cd_genome_manager.GenomeManager):
 
     # cull the genome fragments pool down to size every step
     def next_step(self):
-        self.cull_genome_fragments_pool()
+        cull_genome_fragments_pool()
 
     # creates a genome of:
     # 8 GeneGet genes, one mapped to each input

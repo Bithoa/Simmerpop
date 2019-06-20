@@ -3,9 +3,22 @@ Simulation of Emergent Populations
 
 [Description](#description)\
 [Usage](#usage)\
-  [Instalation and execution](#instalation-and-execution)\
-    [Mac](#mac)\
-    
+⋅⋅⋅[Instalation and execution](#instalation-and-execution)\
+⋅⋅⋅⋅⋅⋅[Mac](#mac)\
+⋅⋅⋅⋅⋅⋅[Linux](#linux)\
+⋅⋅⋅⋅⋅⋅[Windows](#windows)\
+⋅⋅⋅[User definable arguments](#user-definable-arguments)\
+⋅⋅⋅⋅⋅⋅[Simmerpop scripts](#simmerpop-scripts)\
+⋅⋅⋅⋅⋅⋅[Example scripts](#example-scripts)\
+⋅⋅⋅⋅⋅⋅[Cellulator](#cellulator-scripts)\
+⋅⋅⋅[Customizing scripts](#customizing-scripts)\
+[Support](#support)\
+[Contributing](#contributing)\
+[Authors and acknowledgment](#Authors-and-acknowledgment)\
+[Selected publications](#selected-publications)\
+[License](#license)\
+
+
 
 ## Description
 Simmerpop is a repository of code for conducting virtual life simulations. It was developed with a focus on simmulating early life ecosystems to further our understanding of the origin of life. 

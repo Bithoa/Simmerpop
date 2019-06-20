@@ -61,17 +61,6 @@ def clean_carcasses():
             temp_organisms.append(org)
     organisms = temp_organisms
 
-    #!! fix later
-    fix_mutated_organisms_genome_pointers()
-
-
-# YUTA: necessary for my genes
-def fix_mutated_organisms_genome_pointers():
-    global organisms
-    for org in organisms:
-        if org.mutated:
-            global_variables.GENOME_MANAGER.fix_pointers(org)
-
 
 # replicate organisms with enough energy
 def replicate_organisms():

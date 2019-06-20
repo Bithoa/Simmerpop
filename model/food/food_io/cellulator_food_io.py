@@ -17,7 +17,10 @@ def init_script():
     food_type_not.init_script()
 
 
-class FoodIO(cd_food_io.FoodIO):  # this class name cannot be altered. Leave as 'FoodIO'    
+class FoodIO(cd_food_io.FoodIO):  # this class name cannot be altered. Leave as 'FoodIO'  
+    def next_step(self):
+        food_type_not.calc_food_payoff_reduction_factor()
+
     def get_food(self):
         return food_type_not.FoodNot()
 

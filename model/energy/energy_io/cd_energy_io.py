@@ -32,6 +32,9 @@ def make_energy_id():
 class EnergyIO:
     def __init__(self):
         pass
+    
+    def next_step(self):
+        pass
 
     def get_energy(self, organism):
         raise NotImplementedError

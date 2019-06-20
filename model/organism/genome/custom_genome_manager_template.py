@@ -33,6 +33,12 @@ class GenomeManager(cd_genome_manager.GenomeManager):  # this class name cannot 
         # the following example line creates a list to store discarded gene fragments
         self.trash = []
 
+    def next_step(self):
+        # this method is called once per time step and is good for modifying global variables that depend on the step count
+        
+        # this example line increases the EXAMPLE_MUTATE_PROB by 0.01 each step
+        EXAMPLE_MUTATE_PROB += 0.01
+
     def make_genome(self, organism):
         # this method is called when creating an instance of the 'Organism' (defined in the 'organism' module) de novo.
         # it should return a list of genes which represent that organism's initial 'genome'.

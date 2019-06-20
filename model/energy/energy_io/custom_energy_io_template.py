@@ -19,7 +19,7 @@ def init_script():
     # Define the key in the form 'KEY' and access its value by calling
     # global_variables.parameters.get('KEY')
     global EXAMPLE_VARIABLE
-	EXAMPLE_VARIABLE = float(global_variables.parameters.get('EXAMPLE_VARIABLE'))
+    EXAMPLE_VARIABLE = float(global_variables.parameters.get('EXAMPLE_VARIABLE'))
     # in the above example, you could override the default exmple variable value of 0.1 with 0.2 from the command line by typing:
     # python3 run_simmerpop.py EXAMPLE_VARIABLE 0.2
 
@@ -32,6 +32,12 @@ class EnergyIO(cd_energy_io.EnergyIO):  # this class name cannot be altered. Lea
 
         # the following example line creates a variable to store the discarded energy
         self.trash = 0
+	
+    def next_step(self):
+        # this method is called once per time step and is good for modifying global variables that depend on the step count
+	
+        # this example line increases the EXAMPLE_VARIABLE by 0.01 each step
+        EXAMPLE_VARIABLE += 0.01
 
     def get_energy(self, organism):
         # this method is called when an organism requires environmental energy and should return a float representing

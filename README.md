@@ -66,20 +66,22 @@ run_simmerpop.py KEY value
 ```
 
 ### User definable arguments
-User definable arguments can be added as arguments when running run_simmerpop.py from the command line. Each argument comes as a `KEY` `value` pair. Any number of these pairs can be given as arguments in any order. 
+User definable arguments can be added as arguments when running run_simmerpop.py from the command line. Each argument comes as a `KEY``value` pair. Any number of these pairs can be given as arguments in any order. 
 * Most `KEY`s simply change a simulation constant (such as the starting population size) to the given `value` overriding the default value. 
 * Some `KEY`s change the simulation's behavior, following a ruleset denoted by the given `value`. 
 * Some `KEYS`s are used to indicate a different user definable script by giving its name as the `value`. This allows users to program their own versions of specific modules to behave in new ways, without overwriting existing modules. 
 
-`KEY` `value` pairs are listed below organized by which scripts they modify. They are given in the format:\
-`KEY` `default_value` (data_type)\
-*Description: where KEY is the keyword to use, default_value is the value used by the model when it is not especified here, and data_type is the type of data, either and integer, float, or string.*\
+`KEY``value` pairs are listed below organized by which scripts they modify. They are given in the format:
+
+`KEY``default_value` (data_type)\
+*Description: where KEY is the keyword to use, default_value is the value used by the model when it is not especified here, and data_type is the type of data, either and integer, float, boolean, or string.*
 
 
-**global_variables.py**\
-`MUTATION_INTERVAL 100` (int) \
-*set how frequently mutation actions are performed*\
-ENERGY_IO # (string) <'cellulator_energy_io'> select what energy IO script to use\
+**global_variables.py**  
+`MUTATION_INTERVAL``100` (int)  
+*set how frequently mutation actions are performed*  
+`ENERGY_IO``cellulator_energy_io` (string)  
+*select what energy IO script to use*  
 FOOD_IO # (string) <'cellulator_food_io'> select what food IO script to use\
 GENOME_MANAGER # (string) <'cellulator_genome_manager'> select what genome manager script to use\
 

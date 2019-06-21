@@ -37,12 +37,12 @@ from model import population_manager
 from model import analytics
 from model import end_conditions
 
-__authors__ = ['Yuta A. Takagi', 'Diep H. Nguyen (2018)']
+__authors__ = ['Yuta A. Takagi', 'Diep H. Nguyen']
 __contact__ = 'agoldman@oberlin.edu'
 __copyright__ = 'Copyright 2019, Goldman Lab'
 __credits__ = ['Yuta A. Takagi', 'Diep H. Nguyen', 'Aaron D. Goldman', 'Tom Wexler']
 __license__ = 'GPLv3'
-__version__ = '0.9.0'
+__version__ = '1.0.0'
 __maintainer__ = 'Yuta A. Takagi'
 __email__ = 'yutaatakagi@gmail.com'
 __status__ = 'Production'

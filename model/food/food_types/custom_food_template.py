@@ -1,10 +1,19 @@
-# custom_food_template.py
+#!/usr/bin/env python
+
+"""
+This file is part of Simmerpop which is released under the GNU General Purpose License version 3. 
+See COPYING or go to <https://www.gnu.org/licenses/> for full license details.
+"""
+
+import random
+
 from ... import global_variables
 from ..food_types import cd_food_type
 from ..food_io import cd_food_io
-import random
 
-__author__ = 'You!'
+__authors__ = ['Yuta A. Takagi', 'Diep H. Nguyen']
+__copyright__ = 'Copyright 2019, Goldman Lab'
+__license__ = 'GPLv3'
 
 
 # change 'FoodNot' to whatever you'd like to call your food class

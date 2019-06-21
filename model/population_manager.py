@@ -1,17 +1,24 @@
-# population_manager.py
-from . import global_variables
-from . import analytics
-from .organism import organism
+#!/usr/bin/env python
+
+"""
+Defines the organism population, and actions that apply to the ecosystem as a whole (all the organisms, as opposed to
+individual organisms)
+
+This file is part of Simmerpop which is released under the GNU General Purpose License version 3. 
+See COPYING or go to <https://www.gnu.org/licenses/> for full license details.
+"""
+
 import random
 import os
 import re
 
-__author__ = 'Yuta A. Takagi (2016) & Diep H. Nguyen (2018)'
+from . import global_variables
+from . import analytics
+from .organism import organism
 
-
-# defines the organism population, and actions that apply to the ecosystem as a whole (all the organisms, as opposed to
-# individual organisms)
-
+__authors__ = ['Yuta A. Takagi', 'Diep H. Nguyen (2018)']
+__copyright__ = 'Copyright 2019, Goldman Lab'
+__license__ = 'GPLv3'
 
 
 # a list storing all the organisms. its the ecosystem!

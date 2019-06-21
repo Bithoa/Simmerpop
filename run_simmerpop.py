@@ -1,9 +1,7 @@
-# run_simmerpop.py
+#!/usr/bin/env python
+
 """
 This is the master program for the simmerpop.
-
-comment out certain lines to skip the actions performed by that method. for example removing the line
-'end_conditions.check_max_step()' will make it so the model doesn't stop on account of reaching a certain step count
 
 to run the model, simply run this python script!
 to change default variables to custom values, include the tag for the variable followed by the value in the arguments.
@@ -11,17 +9,44 @@ python3 run_simmerpop.py argument1 value1 argument2 value2 etc
 
 E.g: python3 run_simmerpop.py OUTPUT_FOLDER_NAME my_run POPULATION_CAP 1000 MUTATION_PROB 0.005 ENERGY_LIM 2
 
+comment out certain lines to skip the actions performed by that method. for example removing the line
+'end_conditions.check_max_step()' will make it so the model doesn't stop on account of reaching a certain step count
+
+
+This file is part of Simmerpop.
+
+Simmerpop is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Simmerpop is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Simmerpop.  If not, see <https://www.gnu.org/licenses/>.
 
 """
-__author__ = 'Yuta A. Takagi (2016) & Diep H. Nguyen (2018)'
-__version__ = '0.0.1'
-__email__ = 'agoldman@oberlin.edu'
+
+import sys
 
 from model import global_variables
 from model import population_manager
 from model import analytics
 from model import end_conditions
-import sys
+
+__authors__ = ['Yuta A. Takagi', 'Diep H. Nguyen']
+__contact__ = 'agoldman@oberlin.edu'
+__copyright__ = 'Copyright 2019, Goldman Lab'
+__credits__ = ['Yuta A. Takagi', 'Diep H. Nguyen', 'Aaron D. Goldman', 'Tom Wexler']
+__license__ = 'GPLv3'
+__version__ = '1.0.0'
+__maintainer__ = 'Yuta A. Takagi'
+__email__ = 'yutaatakagi@gmail.com'
+__status__ = 'Production'
+
 
 def main():
 

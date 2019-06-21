@@ -1,11 +1,19 @@
-# custom_genome_manager_template.py
+#!/usr/bin/env python
+
+"""
+This file is part of Simmerpop which is released under the GNU General Purpose License version 3. 
+See COPYING or go to <https://www.gnu.org/licenses/> for full license details.
+"""
+
+import random
+
 from ... import global_variables
 from . import cd_genome_manager
 from .gene_types import custom_gene_template
-import random
 
-__author__ = 'Yuta A. Takagi'
-
+__authors__ = ['Yuta A. Takagi', 'Diep H. Nguyen']
+__copyright__ = 'Copyright 2019, Goldman Lab'
+__license__ = 'GPLv3'
 
 # global variables may be shared between all instances of the GenomeManager class
 EXAMPLE_MUTATE_PROB = 0.001

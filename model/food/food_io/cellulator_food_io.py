@@ -1,9 +1,18 @@
-# cellulator_food_io.py
-from . import cd_food_io
-from ..food_types import food_type_not
+#!/usr/bin/env python
+
+"""
+This file is part of Simmerpop which is released under the GNU General Purpose License version 3. 
+See COPYING or go to <https://www.gnu.org/licenses/> for full license details.
+"""
+
 import random
 
-__author__ = 'Yuta A. Takagi (2016) & Diep Nguyen (2018)'
+from . import cd_food_io
+from ..food_types import food_type_not
+
+__authors__ = ['Yuta A. Takagi', 'Diep H. Nguyen']
+__copyright__ = 'Copyright 2019, Goldman Lab'
+__license__ = 'GPLv3'
 
 
 # this food In/Out is designed for Yuta's model and utilizes the following food types:

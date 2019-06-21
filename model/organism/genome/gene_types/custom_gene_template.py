@@ -1,9 +1,16 @@
-# custom_gene_template.py
+#!/usr/bin/env python
+
+"""
+This file is part of Simmerpop which is released under the GNU General Purpose License version 3. 
+See COPYING or go to <https://www.gnu.org/licenses/> for full license details.
+"""
+
 from .... import global_variables
 from . import cd_gene
 
-__author__ = 'You!'
-
+__authors__ = ['Yuta A. Takagi', 'Diep H. Nguyen']
+__copyright__ = 'Copyright 2019, Goldman Lab'
+__license__ = 'GPLv3'
 
 # change 'GeneCustom' to whatever you'd like to call your gene class
 # all genes should be child classes to the 'Gene' class defined in the 'cd_gene' module

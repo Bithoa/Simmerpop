@@ -1,11 +1,19 @@
-# end_conditions.py
+#!/usr/bin/env python
+
+"""
+This file is part of Simmerpop which is released under the GNU General Purpose License version 3. 
+See COPYING or go to <https://www.gnu.org/licenses/> for full license details.
+"""
+
+import time
+
 from . import global_variables
 from . import population_manager
 from . import analytics
-import time
 
-__author__ = 'Yuta A. Takagi (2016) & Diep H. Nguyen (2018)'
-
+__authors__ = ['Yuta A. Takagi', 'Diep H. Nguyen']
+__copyright__ = 'Copyright 2019, Goldman Lab'
+__license__ = 'GPLv3'
 
 # defines a number of functions to end the model when specific conditions are met
 

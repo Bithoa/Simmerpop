@@ -1,9 +1,17 @@
-# custom_energy_io_template.py
-from ... import global_variables
-from . import cd_energy_io
+#!/usr/bin/env python
+
+"""
+This file is part of Simmerpop which is released under the GNU General Purpose License version 3. 
+See COPYING or go to <https://www.gnu.org/licenses/> for full license details.
+"""
+
 import random
 
-__author__ = 'Yuta A. Takagi'
+from . import cd_energy_io
+
+__authors__ = ['Yuta A. Takagi', 'Diep H. Nguyen']
+__copyright__ = 'Copyright 2019, Goldman Lab'
+__license__ = 'GPLv3'from ... import global_variables
 
 
 # a energy In/Out manages the global aspects of energy and interfaces between the population portion of the model.

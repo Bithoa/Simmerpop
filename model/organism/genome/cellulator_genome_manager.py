@@ -1,14 +1,22 @@
-# cellulator_genome_manager.py
-from ... import global_variables
-from . import cd_genome_manager
-from .gene_types import gene_get, gene_put, gene_nand, gene_cellularity
+#!/usr/bin/env python
+
+"""
+This file is part of Simmerpop which is released under the GNU General Purpose License version 3. 
+See COPYING or go to <https://www.gnu.org/licenses/> for full license details.
+"""
+
 import random
 import itertools
 import os
 import re
 
-__author__ = 'Yuta A. Takagi (2016) & Diep H. Nguyen (2018)'
+from ... import global_variables
+from . import cd_genome_manager
+from .gene_types import gene_get, gene_put, gene_nand, gene_cellularity
 
+__authors__ = ['Yuta A. Takagi', 'Diep H. Nguyen']
+__copyright__ = 'Copyright 2019, Goldman Lab'
+__license__ = 'GPLv3'
 
 # this genome manager is designed for the Cellulator study (!!insert publication reference here) and utilizes the following gene types:
 # GeneCellularity

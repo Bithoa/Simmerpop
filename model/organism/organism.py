@@ -1,11 +1,19 @@
-# organism.py
-from .. import global_variables
+#!/usr/bin/env python
+
+"""
+This file is part of Simmerpop which is released under the GNU General Purpose License version 3. 
+See COPYING or go to <https://www.gnu.org/licenses/> for full license details.
+"""
+
 import copy
 import itertools
 import random
 
-__author__ = 'Yuta A. Takagi (2016) & Diep H. Nguyen (2018)'
+from .. import global_variables
 
+__authors__ = ['Yuta A. Takagi', 'Diep H. Nguyen']
+__copyright__ = 'Copyright 2019, Goldman Lab'
+__license__ = 'GPLv3'
 
 # ====================================================================================================
 # ****************************************************************************************************

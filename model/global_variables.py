@@ -11,7 +11,7 @@ import os
 from . import population_manager
 from . import analytics
 
-__authors__ = ['Yuta A. Takagi', 'Diep H. Nguyen (2018)']
+__authors__ = ['Yuta A. Takagi', 'Diep H. Nguyen']
 __copyright__ = 'Copyright 2019, Goldman Lab'
 __license__ = 'GPLv3'
 

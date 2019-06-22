@@ -3,7 +3,7 @@ Simulation of Emergent Populations
 
 [Description](#description)\
 [Usage](#usage)\
- \- [Instalation and execution](#instalation-and-execution)\
+ \- [Installation and execution](#installation-and-execution)\
     \- [Mac](#mac)\
     \- [Linux](#linux)\
     \- [Windows](#windows)\
@@ -29,7 +29,7 @@ Simmerpop is a repository of code for conducting virtual life simulations. It wa
 The Simmerpop repository is freely available on GitHub at:  
 https://github.com/GoldmanLab/Simmerpop/
 
-### Instalation and execution
+### Installation and execution
 To run the simulation, download the entire code repository to the desired location on your machine. 
 
 Then run the python 3 script from the Simmerpop root directory. 
@@ -264,7 +264,7 @@ Anyone is welcome to download, use, and modify the Simmerpop repository to their
 
 If you have created useful or interesting modifications, and would like to contribute them to the distribution version of Simmerpop, please contact Yuta A. Takagi at <yutaatakagi@gmail.com>.
 
-Simmerpop was developed on MacOS, we would appreciate any assistance with testing on Windows or Linux systems. 
+Simmerpop was developed on Unix based systems, we would appreciate any assistance with testing on Windows systems. 
 
 ## Authors and acknowledgment
 Yuta A. Takagi, Diep H. Nguyen, Tom Wexler, Aaron D. Goldman

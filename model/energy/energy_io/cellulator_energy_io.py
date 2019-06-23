@@ -10,10 +10,11 @@ import os
 import math
 
 from . import cd_energy_io
+from ... import global_variables
 
 __authors__ = ['Yuta A. Takagi', 'Diep H. Nguyen']
 __copyright__ = 'Copyright 2019, Goldman Lab'
-__license__ = 'GPLv3'from ... import global_variables
+__license__ = 'GPLv3'
 
 
 # this energy In/Out is designed for Cellulator study

@@ -255,14 +255,14 @@ If you have a group of interdependent custom scripts, it would be good practice 
 
 
 ## Support
-For questions regarding or help running the Simmerpop simulation, or to report a bug or unexpected behavior, please contact Yuta A. Takagi at <yutaatakagi@gmail.com>.
+For questions regarding or help running the Simmerpop simulation, or to report a bug or unexpected behavior, please contact Yuta A. Takagi at <yutaatakagi@gmail.com> and Diep H. Nguyen at <dhng@mit.edu>.
 
 For questions about using the Simmerpop simulation in your own research, please contact Dr. Aaron D. Goldman at <agoldman@oberlin.edu>.
 
 ## Contributing
 Anyone is welcome to download, use, and modify the Simmerpop repository to their liking.
 
-If you have created useful or interesting modifications, and would like to contribute them to the distribution version of Simmerpop, please contact Yuta A. Takagi at <yutaatakagi@gmail.com>.
+If you have created useful or interesting modifications, and would like to contribute them to the distribution version of Simmerpop, please contact Yuta A. Takagi at <yutaatakagi@gmail.com> and Diep H. Nguyen at <dhng@mit.edu>.
 
 Simmerpop was developed on Unix based systems, we would appreciate any assistance with testing on Windows systems. 
 

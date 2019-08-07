@@ -20,8 +20,8 @@ __license__ = 'GPLv3'
 
 METABOLIC_QUALITY_CHECK_COUNT = 1000  # the number of replicate sample foods to solve when calculating the genome quality
 ENERGY_FACTOR = 2 # the starting energy of organisms is the genome length * the ENERGY_FACTOR
-OVERRIDE_ENERGY_TRANSFER_PROB = None
-OVERRIDE_GENE_TRANSFER_PROB = None
+OVERRIDE_ENERGY_TRANSFER_PROB = None # overrides organisms' cellularity with a constant probability when determining energy transfer
+OVERRIDE_GENE_TRANSFER_PROB = None # overrides organisms' cellularity with a constant probability when determining gene transfer
 
 # ****************************************************************************************************
 # ====================================================================================================

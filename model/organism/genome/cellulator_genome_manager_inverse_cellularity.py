@@ -3,6 +3,8 @@
 """
 This file is part of Simmerpop which is released under the GNU General Purpose License version 3. 
 See COPYING or go to <https://www.gnu.org/licenses/> for full license details.
+
+Changed cellularity calculation at line 136 from (1 - 0.5 ** cellularity_gene_tally) to (0.5 ** cellularity_gene_tally)
 """
 
 import random
@@ -131,7 +133,7 @@ class GenomeManager(cd_genome_manager.GenomeManager):
 			for gene in organism.genome:
 				if type(gene) is gene_cellularity.GeneCellularity:
 					cellularity_gene_tally += 1
-			return 1 - 0.5 ** cellularity_gene_tally
+			return 0.5 ** cellularity_gene_tally
 		else:
 			return 0  # if there is no genome, hard code to 0 probability?
 

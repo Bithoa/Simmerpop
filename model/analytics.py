@@ -92,7 +92,7 @@ def prep_files():
 	output_results_current_best_solutions = \
 		open(os.path.join(OUTPUT_DIRECTORY, 'results_organism_current_best_solutions.txt'), 'w')
 	output_results_cellularity_vs_metabolic_efficiency = \
-		open(os.path.join(OUTPUT_DIRECTORY, 'results_cellularity_vs_metabolic_efficiency'), 'w')
+		open(os.path.join(OUTPUT_DIRECTORY, 'results_cellularity_vs_metabolic_efficiency.txt'), 'w')
 
 	# prep output files
 	print('step_num\tnum_organisms\tmean_org_cellularity\tmean_org_metabolism\tnum_energy_parcels\ttotal_energy\t'
@@ -156,14 +156,14 @@ def analyze():
 	output_results.write(temp_to_write + '\n')
 
 
-	if (global_variables.step_num + 1) % 100 == 0:
+	if (global_variables.step_num) % 100 == 0:
 		best_organism = max(population_manager.organisms, key=operator.attrgetter('metabolic_efficiency'))
 		output_results_current_best_solutions.write(
 			str(global_variables.step_num) + ':\t' + str(best_organism.metabolic_efficiency) + '\t' + str(
 				best_organism.cellularity) +
 			'\t' + str(best_organism.genome) + '\n')
 
-	if (global_variables.step_num + 1) % global_variables.MUTATION_INTERVAL == 0:
+	if (global_variables.step_num) % global_variables.MUTATION_INTERVAL == 0:
 
 		metabolic_efficiency_bin_tallies = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 									  0]  # 0-0.5, 0.5-1, 1-1.5, 1.5-2, 2-2.5, 2.5-3, 3-3.5, 3.5-4, 4-4.5, 4.5-5, 5-5.5, 5.5-6, 6-6.5, 6.5-7, 7-7.5, 7.5-8
@@ -229,10 +229,10 @@ def analyze():
 		output_results_organism_cellularity_bins.write(
 			str(global_variables.step_num) + ':\t' + '\t'.join([str(i) for i in cellularity_bin_tallies]) + '\n')
 
-	if (global_variables.step_num + 1) % 100 == 0:
+	if (global_variables.step_num) % 100 == 0:
 		if len(population_manager.organisms) > 0:
 			for org in population_manager.organisms:
 				output_results_cellularity_vs_metabolic_efficiency.write(
-					str(global_variables.step_num) + ':\t' + str(org.cellularity) + '\t' + str(org.metabolic_efficiency) +'\n')
+					str(global_variables.step_num) + '\t' + str(org.cellularity) + '\t' + str(org.metabolic_efficiency) +'\n')
 		else:
 			output_results_cellularity_vs_metabolic_efficiency.write(str(global_variables.step_num) + ':\t' + 'None\tNone\n')

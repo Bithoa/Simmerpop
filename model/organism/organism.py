@@ -20,6 +20,8 @@ __license__ = 'GPLv3'
 
 METABOLIC_QUALITY_CHECK_COUNT = 1000  # the number of replicate sample foods to solve when calculating the genome quality
 ENERGY_FACTOR = 2 # the starting energy of organisms is the genome length * the ENERGY_FACTOR
+OVERRIDE_ENERGY_TRANSFER_PROB = None # overrides organisms' cellularity with a constant probability when determining energy transfer
+OVERRIDE_GENE_TRANSFER_PROB = None # overrides organisms' cellularity with a constant probability when determining gene transfer
 
 # ****************************************************************************************************
 # ====================================================================================================
@@ -29,11 +31,17 @@ ENERGY_FACTOR = 2 # the starting energy of organisms is the genome length * the 
 def init_script():
 	global METABOLIC_QUALITY_CHECK_COUNT
 	global ENERGY_FACTOR
+	global OVERRIDE_ENERGY_TRANSFER_PROB
+	global OVERRIDE_GENE_TRANSFER_PROB
 	# populate the dictionary named 'parameters' from the command line arguments
 	if 'METABOLIC_QUALITY_CHECK_COUNT' in global_variables.parameters.keys():
 		METABOLIC_QUALITY_CHECK_COUNT = int(global_variables.parameters.get('METABOLIC_QUALITY_CHECK_COUNT'))
 	if 'ENERGY_FACTOR' in global_variables.parameters.keys():
 		ENERGY_FACTOR = float(global_variables.parameters.get('ENERGY_FACTOR'))
+	if 'OVERRIDE_ENERGY_TRANSFER_PROB' in global_variables.parameters.keys():
+		OVERRIDE_ENERGY_TRANSFER_PROB = float(global_variables.parameters.get('OVERRIDE_ENERGY_TRANSFER_PROB'))
+	if 'OVERRIDE_GENE_TRANSFER_PROB' in global_variables.parameters.keys():
+		OVERRIDE_GENE_TRANSFER_PROB = float(global_variables.parameters.get('OVERRIDE_GENE_TRANSFER_PROB'))
 
 
 # variables for the 'make_gene_id()' method
@@ -188,25 +196,45 @@ class Organism:
 
 	# passively gain energy based on cellularity
 	def gain_energy(self):
-		if self.cellularity < random.random():
-			self.energy += global_variables.ENERGY_IO.get_energy(self)
+		global OVERRIDE_ENERGY_TRANSFER_PROB
+		if OVERRIDE_ENERGY_TRANSFER_PROB is None:
+			if self.cellularity <= random.random():
+				self.energy += global_variables.ENERGY_IO.get_energy(self)
+		else:
+			if OVERRIDE_ENERGY_TRANSFER_PROB > random.random():
+				self.energy += global_variables.ENERGY_IO.get_energy(self)
 
 	# passively lose energy based on cellularity
 	def lose_energy(self):
-		if self.cellularity < random.random():
-			self.energy -= global_variables.ENERGY_IO.discard_energy(self)
+		global OVERRIDE_ENERGY_TRANSFER_PROB
+		if OVERRIDE_ENERGY_TRANSFER_PROB is None:
+			if self.cellularity <= random.random():
+				self.energy -= global_variables.ENERGY_IO.discard_energy(self)
+		else:
+			if OVERRIDE_ENERGY_TRANSFER_PROB > random.random():
+				self.energy -= global_variables.ENERGY_IO.discard_energy(self)
 
 	# passively gain genes based on cellularity
 	def gain_genes(self):
-		if self.cellularity < random.random():
-			global_variables.GENOME_MANAGER.gain_genes(self)
-			self.genome_size = len(self.genome)
+		global OVERRIDE_GENE_TRANSFER_PROB
+		if OVERRIDE_GENE_TRANSFER_PROB is None:
+			if self.cellularity <= random.random():
+				global_variables.GENOME_MANAGER.gain_genes(self)
+		else:
+			if OVERRIDE_GENE_TRANSFER_PROB > random.random():
+				global_variables.GENOME_MANAGER.gain_genes(self)
+		self.genome_size = len(self.genome)
 
 	# passively lose genes based on cellularity
 	def lose_genes(self):
-		if self.cellularity < random.random():
-			global_variables.GENOME_MANAGER.lose_genes(self)
-			self.genome_size = len(self.genome)
+		global OVERRIDE_GENE_TRANSFER_PROB
+		if OVERRIDE_GENE_TRANSFER_PROB is None:
+			if self.cellularity <= random.random():
+				global_variables.GENOME_MANAGER.lose_genes(self)
+		else:
+			if OVERRIDE_GENE_TRANSFER_PROB > random.random():
+				global_variables.GENOME_MANAGER.lose_genes(self)
+		self.genome_size = len(self.genome)
 
 	# mutate genome
 	def mutate(self):

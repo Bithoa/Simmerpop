@@ -149,6 +149,13 @@ User definable arguments can be added as arguments when running run_simmerpop.py
 
     `ENERGY_FACTOR` `2.0` *(float)*
     > the starting energy of organisms is the genome length * the ENERGY_FACTOR
+    
+    `OVERRIDE_ENERGY_TRANSFER_PROB` `None` *(float)*
+    > overrides organisms' cellularity with a constant probability when determining energy transfer
+    
+    `OVERRIDE_GENE_TRANSFER_PROB` `None` *(float)*
+    > overrides organisms' cellularity with a constant probability when determining gene transfer
+
 
 #### Example scripts
 (templates for writing your own scripts, won't actually do anything if used)

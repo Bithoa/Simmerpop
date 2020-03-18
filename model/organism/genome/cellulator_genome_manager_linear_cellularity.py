@@ -4,7 +4,9 @@
 This file is part of Simmerpop which is released under the GNU General Purpose License version 3. 
 See COPYING or go to <https://www.gnu.org/licenses/> for full license details.
 
-Changed cellularity calculation at line 136 from (1 - 0.5 ** cellularity_gene_tally) to (0.5 ** cellularity_gene_tally)
+Changed cellularity calculation at line 145 from (1 - 0.5 ** cellularity_gene_tally) to 
+(LINEAR_CELLULARITY_COEFFICIENT * cellularity_gene_tally)
+Added a commandline variable for LINEAR_CELLULARITY_COEFFICIENT
 """
 
 import random
@@ -50,6 +52,8 @@ INS_CELL_WT = 5	 # the relative proportion of 'GeneCellularity' genes being inse
 GENOME_BREAK_PROB = 0.1	 # probability of a genome fragmenting after each gene
 NUM_CELLGENES = 0 # initial number of cellularity genes in the starting genome
 HGT_PROB = 0.5 # probability of horizontal gene transfer
+
+LINEAR_CELLULARITY_COEFFICIENT = 1.0
 # ****************************************************************************************************
 # ====================================================================================================
 
@@ -68,6 +72,8 @@ def init_script():
 	global GENOME_BREAK_PROB
 	global NUM_CELLGENES
 	global HGT_PROB
+	global LINEAR_CELLULARITY_COEFFICIENT
+	
 	if 'LOOSE_GENE_POOL_CAP' in global_variables.parameters.keys():
 		LOOSE_GENE_POOL_CAP = int(global_variables.parameters.get('LOOSE_GENE_POOL_CAP'))
 	if 'MUTATION_PROB' in global_variables.parameters.keys():
@@ -96,6 +102,9 @@ def init_script():
 		NUM_CELLGENES = int(global_variables.parameters.get('NUM_CELLGENES'))
 	if 'HGT_PROB' in global_variables.parameters.keys():
 		HGT_PROB = float(global_variables.parameters.get('HGT_PROB'))
+		
+	if 'LINEAR_CELLULARITY_COEFFICIENT' in global_variables.parameters.keys():
+		LINEAR_CELLULARITY_COEFFICIENT = float(global_variables.parameters.get('LINEAR_CELLULARITY_COEFFICIENT'))
 
 
 # the cellulator genome manager class
@@ -126,14 +135,14 @@ class GenomeManager(cd_genome_manager.GenomeManager):
 			temp_genes.append(gene_cellularity.GeneCellularity(organism))
 		return temp_genes
 
-	# calculates the cellularity as 1 - 0.5^(# of cellularity genes)
+	# calculates the cellularity as LINEAR_CELLULARITY_COEFFICIENT*(# of cellularity genes)
 	def calculate_cellularity(self, organism):
 		if len(organism.genome) > 0:
 			cellularity_gene_tally = 0
 			for gene in organism.genome:
 				if type(gene) is gene_cellularity.GeneCellularity:
 					cellularity_gene_tally += 1
-			return 0.5 ** cellularity_gene_tally
+			return LINEAR_CELLULARITY_COEFFICIENT * cellularity_gene_tally
 		else:
 			return 0  # if there is no genome, hard code to 0 probability?
 

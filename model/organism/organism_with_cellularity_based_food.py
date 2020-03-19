@@ -100,7 +100,8 @@ class Organism:
 		self.genome_read_head = 0
 		self.cellularity = None	 # 0. to 1. with 0 being completely leaky and 1 being completely closed off
 		self.calc_cellularity()
-		self.food = None
+		self.food_index = None
+		self.food_stockpile = []
 		self.replicate_me = False
 		self.alive = True
 		self.mutated = True
@@ -121,7 +122,8 @@ class Organism:
 		to_return += str(self.genome) + '#'
 		to_return += str(self.energy) + '#'
 		to_return += str(self.genome_read_head) + '#'
-		to_return += str(self.food) + '#'
+		to_return += str(self.food_index) + '#'
+		to_return += str(self.food_stockpile) + '#'
 		to_return += str(self.replicate_me) + '#'
 		to_return += str(self.alive) + '#'
 		to_return += str(self.mutated) + '>>'
@@ -139,8 +141,10 @@ class Organism:
 		self.age += 1
 
 		# if organism has no food, try to get food
-		if self.food is None:
-			self.food = global_variables.FOOD_IO.get_food()
+		if self.food_index is None:
+			#self.food = global_variables.FOOD_IO.get_food()
+			if len(self.food_stockpile) > 0:
+				self.food_index = random.randrange(len(self.food_stockpile))
 			self.energy -= 1
 
 		# if organism has food
@@ -156,11 +160,13 @@ class Organism:
 			# if organism has reached the end of its genome
 			if self.genome_read_head == len(self.genome):
 				self.genome_read_head = 0
-				solution = self.food.check_solution()
+				solution = self.food_stockpile[self.food_index].check_solution()
 				self.energy += solution[1]
 				self.last_solution_num_correct = solution[0]  # analytics
-				global_variables.FOOD_IO.discard_food(self.food)
-				self.food = None
+				#global_variables.FOOD_IO.discard_food(self.food)
+				global_variables.FOOD_IO.discard_food(self.food_stockpile.pop(self.food_index))
+				#self.food = None
+				self.food_index = None
 				if self.energy >= self.init_energy()*2:
 					self.replicate_me = True
 				for gene in self.genome:
@@ -235,7 +241,26 @@ class Organism:
 			if OVERRIDE_GENE_TRANSFER_PROB > random.random():
 				global_variables.GENOME_MANAGER.lose_genes(self)
 		self.genome_size = len(self.genome)
-
+		
+	# passively add food to food_stockpile
+	def gain_food(self):
+		if self.cellularity <= random.random():
+			self.food_stockpile.append(global_variables.FOOD_IO.get_food())
+	
+	# passively remove food from food_stockpile
+	def lose_food(self):
+		if len(self.food_stockpile) > 0:
+			if self.cellularity <= random.random():
+				# discard a random food
+				index_to_discard = random.randrange(len(self.food_stockpile))
+				global_variables.FOOD_IO.discard_food(self.food_stockpile.pop(index_to_discard))
+				# when the current food being worked on is discarded
+				if index_to_discard == self.food_index:
+					self.food_index = None
+				# adjust the food_index if a food earlier in the food_stockpile list is deleted
+				elif index_to_discard < self.food_index:
+					self.food_index -= 1
+	
 	# mutate genome
 	def mutate(self):
 		global_variables.GENOME_MANAGER.mutate(self)

@@ -14,7 +14,7 @@ import re
 
 from . import global_variables
 from . import analytics
-from .organism import organism
+from .organism import organism_with_cellularity_based_food
 
 __authors__ = ['Yuta A. Takagi', 'Diep H. Nguyen (2018)']
 __copyright__ = 'Copyright 2019, Goldman Lab'
@@ -31,12 +31,12 @@ def init_population_manager():
 	# populate the ecosystem
 	organisms = []
 	for i in range(global_variables.START_POPULATION):
-		organisms.append(organism.Organism())
+		organisms.append(organism_with_cellularity_based_food.Organism())
 	for org in organisms:
-		org.id = organism.make_id('0-God*')
+		org.id = organism_with_cellularity_based_food.make_id('0-God*')
 
 	# organism
-	organism.init_script()
+	organism_with_cellularity_based_food.init_script()
 
 
 # remove dead organisms
@@ -80,6 +80,15 @@ def transfer_genes():
 		org.gain_genes()
 	for org in organisms:
 		org.lose_genes()
+		
+
+# gain/lose food
+def transfer_food():
+	global organisms
+	for org in organisms:
+		org.gain_food()
+	for org in organisms:
+		org.lose_food()
 
 
 # mutate genes

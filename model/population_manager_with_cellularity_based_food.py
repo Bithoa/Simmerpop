@@ -64,6 +64,15 @@ def replicate_organisms():
 	organisms = temp_organisms
 
 
+# gain/lose food
+def transfer_food():
+	global organisms
+	for org in organisms:
+		org.gain_food()
+	for org in organisms:
+		org.lose_food()
+
+	
 # gain/lose energy parcels
 def transfer_energy():
 	global organisms
@@ -80,16 +89,9 @@ def transfer_genes():
 		org.gain_genes()
 	for org in organisms:
 		org.lose_genes()
+	# this is a little hackey. it calls transfer_food here instead of in the run_simmerpop.py script
+	transfer_food()
 		
-
-# gain/lose food
-def transfer_food():
-	global organisms
-	for org in organisms:
-		org.gain_food()
-	for org in organisms:
-		org.lose_food()
-
 
 # mutate genes
 def mutate_organism_genomes():

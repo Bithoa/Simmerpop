@@ -102,6 +102,7 @@ class Organism:
 		self.calc_cellularity()
 		self.food_index = None
 		self.food_stockpile = []
+		self.food = None
 		self.replicate_me = False
 		self.alive = True
 		self.mutated = True
@@ -145,6 +146,7 @@ class Organism:
 			#self.food = global_variables.FOOD_IO.get_food()
 			if len(self.food_stockpile) > 0:
 				self.food_index = random.randrange(len(self.food_stockpile))
+				self.food = self.food_stockpile[self.food_index]
 			self.energy -= 1
 
 		# if organism has food
@@ -160,18 +162,18 @@ class Organism:
 			# if organism has reached the end of its genome
 			if self.genome_read_head == len(self.genome):
 				self.genome_read_head = 0
-				solution = self.food_stockpile[self.food_index].check_solution()
+				solution = self.food.check_solution()
 				self.energy += solution[1]
 				self.last_solution_num_correct = solution[0]  # analytics
 				#global_variables.FOOD_IO.discard_food(self.food)
 				global_variables.FOOD_IO.discard_food(self.food_stockpile.pop(self.food_index))
-				#self.food = None
+				self.food = None
 				self.food_index = None
 				if self.energy >= self.init_energy()*2:
 					self.replicate_me = True
 				for gene in self.genome:
 					gene.val = None
-
+			
 		# dies if it runs out of energy
 		if self.energy <= 0:
 			self.alive = False
@@ -259,6 +261,7 @@ class Organism:
 					# when the current food being worked on is discarded
 					if index_to_discard == self.food_index:
 						self.food_index = None
+						self.food = None
 					# adjust the food_index if a food earlier in the food_stockpile list is deleted
 					elif index_to_discard < self.food_index:
 						self.food_index -= 1

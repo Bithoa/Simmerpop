@@ -254,12 +254,14 @@ class Organism:
 				# discard a random food
 				index_to_discard = random.randrange(len(self.food_stockpile))
 				global_variables.FOOD_IO.discard_food(self.food_stockpile.pop(index_to_discard))
-				# when the current food being worked on is discarded
-				if index_to_discard == self.food_index:
-					self.food_index = None
-				# adjust the food_index if a food earlier in the food_stockpile list is deleted
-				elif index_to_discard < self.food_index:
-					self.food_index -= 1
+				# if the organism is currently working on a food
+				if self.food_index is not None:
+					# when the current food being worked on is discarded
+					if index_to_discard == self.food_index:
+						self.food_index = None
+					# adjust the food_index if a food earlier in the food_stockpile list is deleted
+					elif index_to_discard < self.food_index:
+						self.food_index -= 1
 	
 	# mutate genome
 	def mutate(self):

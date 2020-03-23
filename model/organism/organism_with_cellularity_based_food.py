@@ -193,6 +193,12 @@ class Organism:
 		to_return.genome = copy.deepcopy(self.genome)
 		for gene in to_return.genome:
 			gene.organism = to_return
+		# copy food pool and thin to half
+		to_return.food_stockpile = copy.deepcopy(self.food_stockpile)
+		temp = len(self.food_stockpile)
+		temp = int(temp/2)
+		for x in range(temp):
+			to_return.food_stockpile.pop(random.randrange(len(to_return.food_stockpile)))
 		# set to correct analytical values
 		to_return.id = make_id(self.id)
 		to_return.last_solution_num_correct = self.last_solution_num_correct

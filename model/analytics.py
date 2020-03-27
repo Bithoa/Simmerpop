@@ -236,3 +236,14 @@ def analyze():
 					str(global_variables.step_num) + '\t' + str(org.cellularity) + '\t' + str(org.metabolic_efficiency) +'\n')
 		else:
 			output_results_cellularity_vs_metabolic_efficiency.write(str(global_variables.step_num) + ':\t' + 'None\tNone\n')
+	
+	if (global_variables.step_num) % 100 == 0:
+		if len(population_manager.organisms) > 0:
+			temp = 0
+			for org in population_manager.organisms:
+				try:
+					temp += len(org.food_stockpile)
+				except: 
+					pass
+			temp = temp / len(population_manager.organisms)
+			output_debug.write(temp + '\n')

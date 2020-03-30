@@ -22,6 +22,7 @@ METABOLIC_QUALITY_CHECK_COUNT = 1000  # the number of replicate sample foods to 
 ENERGY_FACTOR = 2 # the starting energy of organisms is the genome length * the ENERGY_FACTOR
 OVERRIDE_ENERGY_TRANSFER_PROB = None # overrides organisms' cellularity with a constant probability when determining energy transfer
 OVERRIDE_GENE_TRANSFER_PROB = None # overrides organisms' cellularity with a constant probability when determining gene transfer
+STARTING_FOOD_STOCK_SIZE = 10 # the number of food parcels the first generation of organism starts with
 
 # ****************************************************************************************************
 # ====================================================================================================
@@ -33,6 +34,7 @@ def init_script():
 	global ENERGY_FACTOR
 	global OVERRIDE_ENERGY_TRANSFER_PROB
 	global OVERRIDE_GENE_TRANSFER_PROB
+	global STARTING_FOOD_STOCK_SIZE
 	# populate the dictionary named 'parameters' from the command line arguments
 	if 'METABOLIC_QUALITY_CHECK_COUNT' in global_variables.parameters.keys():
 		METABOLIC_QUALITY_CHECK_COUNT = int(global_variables.parameters.get('METABOLIC_QUALITY_CHECK_COUNT'))
@@ -42,6 +44,8 @@ def init_script():
 		OVERRIDE_ENERGY_TRANSFER_PROB = float(global_variables.parameters.get('OVERRIDE_ENERGY_TRANSFER_PROB'))
 	if 'OVERRIDE_GENE_TRANSFER_PROB' in global_variables.parameters.keys():
 		OVERRIDE_GENE_TRANSFER_PROB = float(global_variables.parameters.get('OVERRIDE_GENE_TRANSFER_PROB'))
+	if 'STARTING_FOOD_STOCK_SIZE' in global_variables.parameters.keys():
+		STARTING_FOOD_STOCK_SIZE = int(global_variables.parameters.get('STARTING_FOOD_STOCK_SIZE'))
 
 
 # variables for the 'make_gene_id()' method
@@ -102,8 +106,8 @@ class Organism:
 		self.calc_cellularity()
 		self.food_index = None
 		self.food_stockpile = []
-		for x in range(32):
-			self.food_stockpile.append(global_variables.FOOD_IO.get_food())
+		for x in range(STARTING_FOOD_STOCK_SIZE):
+			self.food_stockpile.extend(global_variables.FOOD_IO.get_food())
 		self.food = None
 		self.replicate_me = False
 		self.alive = True
@@ -254,24 +258,12 @@ class Organism:
 	# passively add food to food_stockpile
 	def gain_food(self):
 		if self.cellularity <= random.random():
-			self.food_stockpile.append(global_variables.FOOD_IO.get_food())
+			self.food_stockpile.extend(global_variables.FOOD_IO.get_food())
 	
 	# passively remove food from food_stockpile
 	def lose_food(self):
-		if len(self.food_stockpile) > 0:
-			if self.cellularity <= random.random():
-				# discard a random food
-				index_to_discard = random.randrange(len(self.food_stockpile))
-				global_variables.FOOD_IO.discard_food(self.food_stockpile.pop(index_to_discard))
-				# if the organism is currently working on a food
-				if self.food_index is not None:
-					# when the current food being worked on is discarded
-					if index_to_discard == self.food_index:
-						self.food_index = None
-						self.food = None
-					# adjust the food_index if a food earlier in the food_stockpile list is deleted
-					elif index_to_discard < self.food_index:
-						self.food_index -= 1
+		if self.cellularity <= random.random():
+			global_variables.FOOD_IO.discard_food(self)
 	
 	# mutate genome
 	def mutate(self):

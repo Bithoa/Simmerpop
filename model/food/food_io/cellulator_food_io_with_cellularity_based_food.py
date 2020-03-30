@@ -77,8 +77,29 @@ class FoodIO(cd_food_io.FoodIO):  # this class name cannot be altered. Leave as 
 	def get_test_food(self):
 		return food_type_not.FoodNot()
 
-	def discard_food(self, food_to_discard):
-		self.loose_food_parcels.append(food_to_discard)
+	def discard_food(self, organism):
+		#self.loose_food_parcels.append(food_to_discard)
+		
+		if len(organism.food_stockpile) > 0:
+			# deletes a random number of food parcels up to half of the organism's energy stock
+			maximum = len(organism.food_stockpile) / 2
+			num_to_lose = int(maximum*random.random())
+			parcel_to_lose = []
+			for i in range(num_to_lose):				
+				# discard a random food
+				index_to_discard = random.randrange(len(organism.food_stockpile))
+				parcel_to_lose.append(organism.food_stockpile.pop(index_to_discard))
+				# if the organism is currently working on a food
+				if organism.food_index is not None:
+					# when the current food being worked on is discarded
+					if index_to_discard == organism.food_index:
+						organism.food_index = None
+						organism.food = None
+					# adjust the food_index if a food earlier in the food_stockpile list is deleted
+					elif index_to_discard < organism.food_index:
+						organism.food_index -= 1
+						
+			self.loose_energy_parcels.append(parcel_to_lose)
 
 	def init_food_from_string_repr(self, string_repr):
 		repr_params = string_repr.split('_')

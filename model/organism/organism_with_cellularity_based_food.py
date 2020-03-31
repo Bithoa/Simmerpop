@@ -172,7 +172,7 @@ class Organism:
 				self.energy += solution[1]
 				self.last_solution_num_correct = solution[0]  # analytics
 				#global_variables.FOOD_IO.discard_food(self.food)
-				global_variables.FOOD_IO.discard_food(self.food_stockpile.pop(self.food_index))
+				self.food_stockpile.pop(self.food_index)
 				self.food = None
 				self.food_index = None
 				if self.energy >= self.init_energy()*2:

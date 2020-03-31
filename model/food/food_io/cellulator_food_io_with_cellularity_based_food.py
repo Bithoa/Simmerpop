@@ -50,7 +50,7 @@ class FoodIO(cd_food_io.FoodIO):  # this class name cannot be altered. Leave as 
 		food_type_not.calc_food_payoff_reduction_factor()
 		if global_variables.step_num % global_variables.MUTATION_INTERVAL == 0:
 			self.add_food()
-			self.cull_food()
+			self.cull_food_pool()
 		
 	def add_food(self):
 		global NEW_FOOD_PARCEL_SIZE

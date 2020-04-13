@@ -22,6 +22,7 @@ METABOLIC_QUALITY_CHECK_COUNT = 1000  # the number of replicate sample foods to 
 ENERGY_FACTOR = 2 # the starting energy of organisms is the genome length * the ENERGY_FACTOR
 OVERRIDE_ENERGY_TRANSFER_PROB = None # overrides organisms' cellularity with a constant probability when determining energy transfer
 OVERRIDE_GENE_TRANSFER_PROB = None # overrides organisms' cellularity with a constant probability when determining gene transfer
+REPLICATION_COST = 0 # the cost to replicate per gene in the genome
 
 # ****************************************************************************************************
 # ====================================================================================================
@@ -33,6 +34,7 @@ def init_script():
 	global ENERGY_FACTOR
 	global OVERRIDE_ENERGY_TRANSFER_PROB
 	global OVERRIDE_GENE_TRANSFER_PROB
+	global REPLICATION_COST
 	# populate the dictionary named 'parameters' from the command line arguments
 	if 'METABOLIC_QUALITY_CHECK_COUNT' in global_variables.parameters.keys():
 		METABOLIC_QUALITY_CHECK_COUNT = int(global_variables.parameters.get('METABOLIC_QUALITY_CHECK_COUNT'))
@@ -42,6 +44,8 @@ def init_script():
 		OVERRIDE_ENERGY_TRANSFER_PROB = float(global_variables.parameters.get('OVERRIDE_ENERGY_TRANSFER_PROB'))
 	if 'OVERRIDE_GENE_TRANSFER_PROB' in global_variables.parameters.keys():
 		OVERRIDE_GENE_TRANSFER_PROB = float(global_variables.parameters.get('OVERRIDE_GENE_TRANSFER_PROB'))
+	if 'REPLICATION_COST' in global_variables.parameters.keys():
+		REPLICATION_COST = float(global_variables.parameters.get('REPLICATION_COST'))
 
 
 # variables for the 'make_gene_id()' method
@@ -129,6 +133,8 @@ class Organism:
 
 	# executes the next step in the genome
 	def step(self, *args):
+		global REPLICATION_COST
+		
 		if len(args) > 0:
 			self.position = args[0]
 
@@ -161,7 +167,7 @@ class Organism:
 				self.last_solution_num_correct = solution[0]  # analytics
 				global_variables.FOOD_IO.discard_food(self.food)
 				self.food = None
-				if self.energy >= self.init_energy()*2:
+				if self.energy >= (self.init_energy()*2 + REPLICATION_COST*len(self.genome)):
 					self.replicate_me = True
 				for gene in self.genome:
 					gene.val = None
@@ -176,10 +182,12 @@ class Organism:
 
 	# returns an offspring of the organism
 	def replicate(self):
+		global REPLICATION_COST
 		to_return = Organism()
 		# calculate new energy
+		self.energy -= REPLICATION_COST*len(self.genome)
 		to_return.energy = self.energy/2
-		if to_return.energy >= self.init_energy()*2:
+		if to_return.energy >= (self.init_energy()*2 + REPLICATION_COST*len(self.genome)):
 			to_return.replicate_me = True
 		# copy genome
 		to_return.genome = copy.deepcopy(self.genome)

@@ -155,6 +155,9 @@ User definable arguments can be added as arguments when running run_simmerpop.py
     
     `OVERRIDE_GENE_TRANSFER_PROB` `None` *(float)*
     > overrides organisms' cellularity with a constant probability when determining gene transfer
+    
+    `REPLICATION_COST` `0` *(float)*
+    > the cost to replicate per gene in the genome
 
 
 #### Example scripts

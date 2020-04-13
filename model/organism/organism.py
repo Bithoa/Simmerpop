@@ -168,7 +168,6 @@ class Organism:
 				global_variables.FOOD_IO.discard_food(self.food)
 				self.food = None
 				if self.energy >= (self.init_energy()*2 + REPLICATION_COST*len(self.genome)):
-					self.energy -= REPLICATION_COST*len(self.genome)
 					self.replicate_me = True
 				for gene in self.genome:
 					gene.val = None

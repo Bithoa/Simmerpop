@@ -185,7 +185,6 @@ class Organism:
 		global REPLICATION_COST
 		to_return = Organism()
 		# calculate new energy
-		self.energy -= REPLICATION_COST*len(self.genome)
 		to_return.energy = self.energy/2
 		if to_return.energy >= (self.init_energy()*2 + REPLICATION_COST*len(self.genome)):
 			to_return.replicate_me = True

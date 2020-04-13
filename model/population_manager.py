@@ -52,9 +52,13 @@ def clean_carcasses():
 # replicate organisms with enough energy
 def replicate_organisms():
 	global organisms
+	REPLICATION_COST = 0
+	if 'REPLICATION_COST' in global_variables.parameters.keys():
+		REPLICATION_COST = float(global_variables.parameters.get('REPLICATION_COST'))
 	temp_organisms = []
 	for org in organisms:
 		if org.replicate_me:
+			org.energy -= REPLICATION_COST*len(org.genome)
 			temp1 = org.replicate()
 			temp2 = org.replicate()
 			temp_organisms.append(temp1)

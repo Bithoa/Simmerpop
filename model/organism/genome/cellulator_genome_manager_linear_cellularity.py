@@ -137,6 +137,7 @@ class GenomeManager(cd_genome_manager.GenomeManager):
 
 	# calculates the cellularity as LINEAR_CELLULARITY_COEFFICIENT*(# of cellularity genes)
 	def calculate_cellularity(self, organism):
+		global LINEAR_CELLULARITY_COEFFICIENT
 		if len(organism.genome) > 0:
 			cellularity_gene_tally = 0
 			for gene in organism.genome:
